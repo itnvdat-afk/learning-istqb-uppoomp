@@ -1,0 +1,523 @@
+<title>ISTQB CTFL v4.0.1 — Sổ Tay Lý Thuyết</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --ground:#f4f2ec; --surface:#ffffff; --surface-2:#faf8f3;
+  --ink:#1d2130; --muted:#565b6b; --faint:#868b99;
+  --line:#e5e1d6; --line-strong:#d6d1c2;
+  --accent:#c9820a; --accent-ink:#8a5600; --accent-soft:#f6ecd6;
+  --k1:#3a72a0; --k1-soft:#e6f0f6; --k2:#2f9276; --k2-soft:#e1f0ea; --k3:#c05a3a; --k3-soft:#f6e4dd;
+  --key:#b6791f; --key-bg:#fbf3df; --key-line:#e9d3a0;
+  --shadow:0 1px 2px rgba(29,33,48,.05),0 8px 26px rgba(29,33,48,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#14161d; --surface:#1c1f28; --surface-2:#20242e;
+    --ink:#ecebe4; --muted:#a4a9b7; --faint:#787e8d;
+    --line:#2b2f3a; --line-strong:#3a3f4c;
+    --accent:#e8a63a; --accent-ink:#f0c877; --accent-soft:#33291640;
+    --k1:#6ba6d4; --k1-soft:#1e2c3a; --k2:#5cc0a2; --k2-soft:#173029; --k3:#e58a68; --k3-soft:#331f18;
+    --key:#e6b54c; --key-bg:#2a2415; --key-line:#4a3d1e;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#14161d; --surface:#1c1f28; --surface-2:#20242e;
+  --ink:#ecebe4; --muted:#a4a9b7; --faint:#787e8d;
+  --line:#2b2f3a; --line-strong:#3a3f4c;
+  --accent:#e8a63a; --accent-ink:#f0c877; --accent-soft:#33291640;
+  --k1:#6ba6d4; --k1-soft:#1e2c3a; --k2:#5cc0a2; --k2-soft:#173029; --k3:#e58a68; --k3-soft:#331f18;
+  --key:#e6b54c; --key-bg:#2a2415; --key-line:#4a3d1e;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.68}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;line-height:1.25;text-wrap:balance}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+
+/* progress + topbar */
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:60}
+header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--ground) 90%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:12px;padding:11px 18px;max-width:1200px;margin:0 auto}
+.brand .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);font-weight:700}
+.brand h1{font-size:18px;margin:0}
+.spacer{flex:1}
+.iconbtn{appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);
+  height:38px;min-width:38px;padding:0 10px;border-radius:9px;cursor:pointer;font-size:15px;display:inline-grid;place-items:center;font-family:inherit}
+.iconbtn:hover{border-color:var(--accent)}
+#menuBtn{display:none}
+
+/* layout */
+.layout{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:250px 1fr;gap:32px;padding:0 18px}
+nav.toc{position:sticky;top:64px;align-self:start;height:calc(100vh - 80px);overflow-y:auto;padding:22px 0 40px;
+  scrollbar-width:thin}
+nav.toc h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0 0 10px;font-family:inherit;font-weight:700}
+.toc a{display:block;text-decoration:none;color:var(--muted);font-size:13.5px;padding:5px 12px;border-left:2px solid var(--line);line-height:1.4}
+.toc a:hover{color:var(--ink);border-left-color:var(--line-strong)}
+.toc a.top{color:var(--ink);font-weight:600;margin-top:14px;border-left-color:transparent;padding-left:10px;font-family:Georgia,serif}
+.toc a.top .cn{display:inline-grid;place-items:center;width:19px;height:19px;border-radius:5px;background:var(--ink);color:var(--ground);font-size:11px;margin-right:7px;vertical-align:middle}
+.toc a.active{color:var(--accent-ink);border-left-color:var(--accent);background:var(--accent-soft)}
+
+main{padding:26px 0 90px;min-width:0}
+.hero{margin:0 0 30px}
+.hero .eyebrow{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-ink);font-weight:700}
+.hero h1{font-size:30px;margin:8px 0 10px}
+.hero p{color:var(--muted);max-width:64ch;margin:0}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 13px;font-size:13px;box-shadow:var(--shadow)}
+.fact b{color:var(--accent-ink)}
+
+section.ch{scroll-margin-top:66px;margin-bottom:14px;padding:26px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.ch-head{display:flex;align-items:center;gap:13px;margin-bottom:6px}
+.ch-num{width:34px;height:34px;border-radius:9px;background:var(--ink);color:var(--ground);display:grid;place-items:center;font-family:Georgia,serif;font-weight:700;font-size:18px;flex:none}
+.ch-head h2{font-size:22px;margin:0}
+.ch-min{color:var(--faint);font-size:12.5px;margin-left:auto;text-align:right}
+h3.sub{font-size:17px;margin:26px 0 8px;padding-top:16px;border-top:1px solid var(--line);color:var(--accent-ink)}
+h3.sub:first-of-type{border-top:0;padding-top:6px}
+h4{font-size:15px;margin:16px 0 4px}
+main p{margin:9px 0}
+main ul{margin:9px 0;padding-left:20px}
+main li{margin:4px 0}
+strong{color:var(--ink)}
+.term{font-family:ui-monospace,monospace;font-size:.88em;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--accent-ink)}
+
+/* callouts */
+.key{display:flex;gap:11px;background:var(--key-bg);border:1px solid var(--key-line);border-radius:11px;padding:12px 14px;margin:14px 0}
+.key .ic{flex:none;font-size:15px;line-height:1.5}
+.key p{margin:0;font-size:14.5px}
+.key b{color:var(--key)}
+
+/* tables */
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:11px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:440px}
+th,td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--surface-2);font-family:Georgia,serif;font-weight:700;font-size:13.5px;position:sticky;top:0}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--surface-2)}
+td b,th b{color:var(--ink)}
+
+.k{font-family:ui-monospace,monospace;font-size:10.5px;font-weight:700;padding:1px 6px;border-radius:5px}
+.k.K1{background:var(--k1-soft);color:var(--k1)} .k.K2{background:var(--k2-soft);color:var(--k2)} .k.K3{background:var(--k3-soft);color:var(--k3)}
+
+.flow{font-family:ui-monospace,monospace;font-size:13px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:10px;padding:13px 15px;margin:13px 0;white-space:pre-wrap;line-height:1.5;overflow-x:auto}
+
+footer{max-width:1200px;margin:0 auto;padding:24px 18px 40px;color:var(--faint);font-size:13px;text-align:center}
+a{color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.scrim{display:none}
+
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr}
+  #menuBtn{display:inline-grid}
+  nav.toc{position:fixed;top:0;left:0;bottom:0;width:280px;height:100vh;background:var(--surface);
+    border-right:1px solid var(--line);padding:20px;z-index:55;transform:translateX(-102%);transition:transform .25s;overflow-y:auto}
+  nav.toc.open{transform:none}
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:50;display:none}
+  .scrim.on{display:block}
+}
+</style>
+
+<div id="prog" aria-hidden="true"></div>
+<header>
+  <div class="bar">
+    <button class="iconbtn" id="menuBtn" aria-label="Mục lục">☰</button>
+    <div class="brand">
+      <div class="eyebrow">ISTQB CTFL · v4.0.1 · Tiếng Việt</div>
+      <h1>Sổ Tay Lý Thuyết</h1>
+    </div>
+    <div class="spacer"></div>
+    <button class="iconbtn" id="themeBtn" aria-label="Đổi giao diện">◐</button>
+  </div>
+</header>
+
+<div class="scrim" id="scrim"></div>
+<div class="layout">
+  <nav class="toc" id="toc" aria-label="Mục lục">
+    <h2>Mục lục</h2>
+    <a class="top" href="#ch1"><span class="cn">1</span>Nền tảng Kiểm thử</a>
+    <a href="#ch1">1.1 Kiểm thử là gì?</a>
+    <a href="#c12">1.2 Tại sao cần kiểm thử?</a>
+    <a href="#c13">1.3 Bảy nguyên tắc</a>
+    <a href="#c14">1.4 Hoạt động, testware, vai trò</a>
+    <a href="#c15">1.5 Kỹ năng &amp; thực hành tốt</a>
+    <a class="top" href="#ch2"><span class="cn">2</span>Kiểm thử trong SDLC</a>
+    <a href="#ch2">2.1 Bối cảnh SDLC</a>
+    <a href="#c22">2.2 Mức &amp; loại kiểm thử</a>
+    <a href="#c23">2.3 Kiểm thử bảo trì</a>
+    <a class="top" href="#ch3"><span class="cn">3</span>Kiểm thử tĩnh</a>
+    <a href="#ch3">3.1 Cơ bản kiểm thử tĩnh</a>
+    <a href="#c32">3.2 Phản hồi &amp; rà soát</a>
+    <a class="top" href="#ch4"><span class="cn">4</span>Phân tích &amp; Thiết kế</a>
+    <a href="#ch4">4.1 Tổng quan kỹ thuật</a>
+    <a href="#c42">4.2 Hộp đen</a>
+    <a href="#c43">4.3 Hộp trắng</a>
+    <a href="#c44">4.4 Dựa trên kinh nghiệm</a>
+    <a href="#c45">4.5 Dựa trên cộng tác</a>
+    <a class="top" href="#ch5"><span class="cn">5</span>Quản lý Hoạt động KT</a>
+    <a href="#ch5">5.1 Lập kế hoạch</a>
+    <a href="#c52">5.2 Quản lý rủi ro</a>
+    <a href="#c53">5.3 Giám sát &amp; kiểm soát</a>
+    <a href="#c54">5.4 Quản lý cấu hình</a>
+    <a href="#c55">5.5 Quản lý lỗi</a>
+    <a class="top" href="#ch6"><span class="cn">6</span>Công cụ Kiểm thử</a>
+    <a href="#ch6">6.1 Công cụ hỗ trợ</a>
+    <a href="#c62">6.2 Lợi ích &amp; rủi ro tự động hóa</a>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">Toàn bộ nội dung bài học</div>
+      <h1>Nền tảng Kiểm thử Phần mềm — Cấp độ Nền tảng</h1>
+      <p>Tổng hợp lý thuyết 6 chương của đề cương ISTQB® CTFL v4.0.1, bám sát thuật ngữ tiếng Việt chính thức. Dùng để đọc — hiểu bản chất — ôn tập. Ô <b style="color:var(--key)">🔑</b> là điểm dễ ra thi hoặc dễ nhầm.</p>
+      <div class="facts">
+        <span class="fact"><b>40</b> câu thi</span>
+        <span class="fact">Đậu <b>≥65%</b></span>
+        <span class="fact"><b>60′</b></span>
+        <span class="fact">K-level tối đa <b>K3</b></span>
+        <span class="fact"><b>1.135′</b> đào tạo</span>
+      </div>
+    </div>
+
+    <!-- ===================== CHƯƠNG 1 ===================== -->
+    <section class="ch" id="ch1">
+      <div class="ch-head"><div class="ch-num">1</div><h2>Nền tảng Kiểm thử</h2><div class="ch-min">180 phút · 8 câu</div></div>
+
+      <h3 class="sub">1.1 Kiểm thử là gì?</h3>
+      <p>Kiểm thử phần mềm là <strong>một tập hợp nhiều hoạt động</strong> nhằm phát hiện lỗi và <strong>đánh giá chất lượng</strong> các sản phẩm công việc. Sản phẩm khi được kiểm thử gọi là <strong>đối tượng kiểm thử</strong> (<span class="term">test object</span>).</p>
+      <div class="key"><span class="ic">🔑</span><p><b>Hai hiểu lầm:</b> (1) kiểm thử chỉ là <em>thực thi test case</em> — sai, còn nhiều hoạt động khác; (2) kiểm thử chỉ là <em>xác minh</em> — sai, gồm cả thẩm định.</p></div>
+      <div class="tw"><table><thead><tr><th>Khái niệm</th><th>Ý nghĩa</th></tr></thead><tbody>
+        <tr><td><b>Verification</b> (xác minh)</td><td>Hệ thống có đáp ứng <b>yêu cầu đã mô tả</b> không? — "làm đúng thứ đã đặc tả".</td></tr>
+        <tr><td><b>Validation</b> (thẩm định)</td><td>Hệ thống có đáp ứng <b>nhu cầu người dùng</b> trong môi trường vận hành không? — "làm đúng thứ người dùng cần".</td></tr>
+        <tr><td>Kiểm thử <b>động</b></td><td>Cần thực thi phần mềm.</td></tr>
+        <tr><td>Kiểm thử <b>tĩnh</b></td><td>Không thực thi — rà soát &amp; phân tích tĩnh.</td></tr>
+      </tbody></table></div>
+      <h4>1.1.1 Mục tiêu kiểm thử điển hình</h4>
+      <ul>
+        <li>Đánh giá sản phẩm công việc; phát hiện sự cố &amp; tìm lỗi; đảm bảo độ bao phủ.</li>
+        <li><strong>Giảm mức rủi ro</strong> về chất lượng; <strong>tăng niềm tin</strong>.</li>
+        <li>Xác minh yêu cầu &amp; tuân thủ hợp đồng/pháp lý; cung cấp thông tin để <strong>ra quyết định</strong>; thẩm định hoạt động như mong đợi.</li>
+      </ul>
+      <h4>1.1.2 Kiểm thử và Gỡ lỗi (debugging)</h4>
+      <p>Là <strong>hai hoạt động riêng biệt</strong>. Gỡ lỗi (không phải kiểm thử): <strong>tái hiện → chẩn đoán → sửa lỗi</strong>. Sau sửa: <strong>kiểm thử xác nhận</strong> rồi <strong>kiểm thử hồi quy</strong>.</p>
+
+      <h3 class="sub" id="c12">1.2 Tại sao cần kiểm thử?</h3>
+      <p><b>Đóng góp:</b> phát hiện lỗi hiệu quả chi phí (gián tiếp nâng chất lượng), đánh giá trực tiếp chất lượng để quyết định phát hành, là <strong>đại diện gián tiếp cho người dùng</strong>, đáp ứng yêu cầu hợp đồng/pháp lý.</p>
+      <h4>1.2.2 Kiểm thử (QC) vs Đảm bảo Chất lượng (QA)</h4>
+      <div class="tw"><table><thead><tr><th></th><th>Kiểm thử (QC)</th><th>QA</th></tr></thead><tbody>
+        <tr><td>Hướng</td><td>Hướng <b>sản phẩm</b></td><td>Hướng <b>quy trình</b></td></tr>
+        <tr><td>Tính chất</td><td><b>Khắc phục</b></td><td><b>Phòng ngừa</b></td></tr>
+        <tr><td>Bản chất</td><td>Một hình thức kiểm soát chất lượng</td><td>Quy trình tốt → sản phẩm tốt; trách nhiệm của <b>mọi người</b></td></tr>
+      </tbody></table></div>
+      <h4>1.2.3 Sai sót – Lỗi – Sự cố – Nguyên nhân gốc rễ</h4>
+      <div class="flow">Nguyên nhân gốc rễ (root cause)
+  → Con người mắc SAI SÓT (error)
+     → tạo ra LỖI (defect/bug) trong tài liệu, mã nguồn…
+        → khi thực thi có thể gây SỰ CỐ (failure)</div>
+      <div class="key"><span class="ic">🔑</span><p>Một lỗi <b>không phải lúc nào cũng</b> gây sự cố. Sự cố còn có thể do <b>môi trường</b> (bức xạ, từ trường), không chỉ do lỗi. <b>RCA</b> xử lý nguyên nhân gốc để ngăn lỗi tương tự.</p></div>
+
+      <h3 class="sub" id="c13">1.3 Bảy Nguyên tắc Kiểm thử</h3>
+      <div class="tw"><table><thead><tr><th>#</th><th>Nguyên tắc</th><th>Cốt lõi</th></tr></thead><tbody>
+        <tr><td>1</td><td>Cho thấy sự <b>tồn tại</b> của lỗi</td><td>Không chứng minh vắng mặt lỗi.</td></tr>
+        <tr><td>2</td><td>Vét cạn là <b>bất khả thi</b></td><td>Dùng kỹ thuật, ưu tiên hóa, kiểm thử dựa vào rủi ro.</td></tr>
+        <tr><td>3</td><td>Kiểm thử <b>sớm</b></td><td>Shift-left → tiết kiệm thời gian &amp; chi phí.</td></tr>
+        <tr><td>4</td><td>Lỗi <b>tập trung</b></td><td>Pareto 80/20 — vài thành phần chứa phần lớn lỗi.</td></tr>
+        <tr><td>5</td><td>Nghịch lý <b>thuốc trừ sâu</b></td><td>Test lặp mãi giảm hiệu quả → rà soát, sửa, bổ sung.</td></tr>
+        <tr><td>6</td><td>Phụ thuộc <b>ngữ cảnh</b></td><td>Không có cách tiếp cận chung cho mọi trường hợp.</td></tr>
+        <tr><td>7</td><td>Ngộ nhận <b>vắng lỗi</b></td><td>Verification kỹ vẫn có thể ra hệ thống sai nhu cầu → cần validation.</td></tr>
+      </tbody></table></div>
+
+      <h3 class="sub" id="c14">1.4 Hoạt động, Sản phẩm &amp; Vai trò</h3>
+      <h4>1.4.1 Hoạt động &amp; nhiệm vụ kiểm thử</h4>
+      <div class="tw"><table><thead><tr><th>Hoạt động</th><th>Nội dung</th></tr></thead><tbody>
+        <tr><td>Lập kế hoạch</td><td>Xác định mục tiêu + chọn cách tiếp cận.</td></tr>
+        <tr><td>Giám sát &amp; kiểm soát</td><td>Theo dõi tiến độ vs kế hoạch; hành động điều chỉnh.</td></tr>
+        <tr><td><b>Phân tích</b></td><td>"<b>Kiểm thử cái gì?</b>" → xác định khía cạnh/điều kiện đo lường được.</td></tr>
+        <tr><td><b>Thiết kế</b></td><td>"<b>Kiểm thử như thế nào?</b>" → test case, hạng mục bao phủ, dữ liệu.</td></tr>
+        <tr><td>Triển khai</td><td>Tạo testware, thiết lập môi trường.</td></tr>
+        <tr><td>Thực thi</td><td>Chạy test; so sánh thực tế vs mong đợi; ghi nhận bất thường.</td></tr>
+        <tr><td>Hoàn tất</td><td>Xử lý lỗi còn lại, lưu testware, rút bài học, báo cáo.</td></tr>
+      </tbody></table></div>
+      <div class="key"><span class="ic">🔑</span><p>Các hoạt động thường <b>lặp/song song</b>. Nhớ: <b>Phân tích = cái gì</b>, <b>Thiết kế = như thế nào</b>.</p></div>
+      <h4>1.4.3 Testware (sản phẩm kiểm thử)</h4>
+      <p>Đầu ra của mỗi hoạt động: kế hoạch/lịch/danh sách rủi ro · báo cáo tiến độ · khía cạnh KT · test case &amp; test charter · test procedure/script/suite, stub/driver/simulator · nhật ký &amp; báo cáo lỗi · báo cáo hoàn tất.</p>
+      <h4>1.4.4 Truy vết (traceability)</h4>
+      <p>Truy vết cơ sở KT ↔ testware ↔ kết quả ↔ lỗi → đánh giá <strong>độ bao phủ</strong> (làm KPI), phân tích tác động thay đổi, báo cáo dễ hiểu.</p>
+      <h4>1.4.5 Vai trò trong kiểm thử</h4>
+      <div class="tw"><table><thead><tr><th>Vai trò</th><th>Tập trung</th></tr></thead><tbody>
+        <tr><td><b>Quản lý kiểm thử</b></td><td>Lập kế hoạch, giám sát, kiểm soát, hoàn tất.</td></tr>
+        <tr><td><b>Thực hiện kiểm thử</b></td><td>Kỹ thuật: phân tích, thiết kế, triển khai, thực thi.</td></tr>
+      </tbody></table></div>
+      <div class="key"><span class="ic">🔑</span><p>Một người có thể giữ cả hai vai trò. Testing là hoạt động <b>kỹ thuật</b>, không phải quản lý.</p></div>
+
+      <h3 class="sub" id="c15">1.5 Kỹ năng &amp; Thực hành Tốt</h3>
+      <p><b>Kỹ năng cần thiết:</b> kiến thức kiểm thử · cẩn thận/tỉ mỉ/tò mò · <strong>giao tiếp &amp; làm việc nhóm</strong> · tư duy phân tích/phản biện · kiến thức kỹ thuật · <strong>kiến thức nghiệp vụ</strong>.</p>
+      <div class="key"><span class="ic">🔑</span><p>Tester thường truyền "tin xấu" → <b>giao tiếp</b> cực kỳ quan trọng; truyền đạt lỗi theo hướng <b>xây dựng</b> (chú ý confirmation bias).</p></div>
+      <h4>1.5.2 Cách tiếp cận Toàn Đội ngũ (Whole Team)</h4>
+      <p>Xuất phát từ <strong>Extreme Programming (XP)</strong>. Mọi thành viên <strong>cùng chịu trách nhiệm chất lượng</strong>; cùng không gian → giao tiếp tốt. <em>Không phải lúc nào cũng phù hợp</em> — hệ thống an toàn cao cần độc lập hơn.</p>
+      <h4>1.5.3 Tính độc lập</h4>
+      <p>Mức độ tăng dần: tự kiểm thử → đồng nghiệp → tester ngoài nhóm → tester ngoài tổ chức. <b>Lợi ích:</b> phát hiện loại lỗi khác, chất vấn giả định. <b>Hạn chế:</b> cô lập, đối đầu, dev mất trách nhiệm chất lượng, bị xem là nút thắt.</p>
+      <div class="key"><span class="ic">🔑</span><p>Độc lập <b>không thay thế sự am hiểu</b> — dev vẫn tìm được nhiều lỗi trong code của mình.</p></div>
+    </section>
+
+    <!-- ===================== CHƯƠNG 2 ===================== -->
+    <section class="ch" id="ch2">
+      <div class="ch-head"><div class="ch-num">2</div><h2>Kiểm thử Trong suốt Vòng đời PTPM</h2><div class="ch-min">130 phút · 6 câu</div></div>
+
+      <h3 class="sub">2.1 Kiểm thử theo Bối cảnh SDLC</h3>
+      <p><b>Ba nhóm mô hình:</b> <strong>Tuần tự</strong> (Waterfall, V-model) · <strong>Lặp</strong> (Spiral, Prototyping) · <strong>Gia tăng</strong> (Unified Process). Phương pháp Agile: ATDD, BDD, DDD, XP, FDD, Kanban, Lean, Scrum, TDD.</p>
+      <p><b>Ảnh hưởng đến KT:</b> phạm vi &amp; thời điểm · chi tiết tài liệu · kỹ thuật · mức tự động hóa · vai trò tester. Agile → dùng nhiều kỹ thuật <strong>dựa trên kinh nghiệm</strong> &amp; tự động hóa hồi quy.</p>
+      <h4>2.1.3 Test-first (dẫn dắt phát triển)</h4>
+      <div class="tw"><table><thead><tr><th>Phương pháp</th><th>Đặc điểm</th></tr></thead><tbody>
+        <tr><td><b>TDD</b></td><td>Test trước → viết code đáp ứng → tái cấu trúc.</td></tr>
+        <tr><td><b>ATDD</b></td><td>Test dựa trên <b>tiêu chí chấp nhận</b>, viết trước khi phát triển.</td></tr>
+        <tr><td><b>BDD</b></td><td>Mô tả hành vi bằng <b>Given/When/Then</b> → tự động chuyển thành test.</td></tr>
+      </tbody></table></div>
+      <div class="key"><span class="ic">🔑</span><p>Cả ba đều: <b>kiểm thử sớm + shift-left</b>, test viết <b>trước</b> code, hỗ trợ mô hình lặp.</p></div>
+      <h4>2.1.4 DevOps</h4>
+      <p>Phối hợp <strong>phát triển + vận hành</strong>; dùng <strong>CI</strong> (tích hợp liên tục) &amp; <strong>CD</strong> (phân phối liên tục). Lợi ích: phản hồi nhanh, thúc đẩy shift-left, giảm hồi quy thủ công. <em>KT thủ công (góc độ người dùng) vẫn cần thiết.</em></p>
+      <h4>2.1.5 Shift Left</h4>
+      <p>= Kiểm thử sớm — hoạt động KT tiến hành <strong>sớm hơn</strong>. <b>Không</b> có nghĩa xem nhẹ KT giai đoạn sau. Thực hành: rà soát đặc tả, viết test trước code, CI/CD, phân tích tĩnh, <strong>KT phi chức năng ngay từ mức thành phần</strong>.</p>
+      <h4>2.1.6 Retrospective</h4>
+      <p>Cuối dự án/chu kỳ — thảo luận: <em>Gì thành công? Gì cần cải thiện? Áp dụng thế nào?</em> Kết quả nằm trong <strong>báo cáo hoàn tất kiểm thử</strong>.</p>
+
+      <h3 class="sub" id="c22">2.2 Các Mức &amp; Loại Kiểm thử</h3>
+      <h4>2.2.1 Năm mức kiểm thử</h4>
+      <div class="tw"><table><thead><tr><th>Mức</th><th>Trọng tâm</th></tr></thead><tbody>
+        <tr><td><b>Thành phần</b> (unit)</td><td>Thành phần độc lập; do dev; cần test harness.</td></tr>
+        <tr><td><b>Tích hợp thành phần</b></td><td>Kết nối giữa thành phần (bottom-up/top-down/big-bang).</td></tr>
+        <tr><td><b>Hệ thống</b></td><td>Hành vi tổng thể end-to-end; chức năng + phi chức năng.</td></tr>
+        <tr><td><b>Tích hợp hệ thống</b></td><td>Kết nối hệ thống/dịch vụ ngoài; môi trường gần thực tế.</td></tr>
+        <tr><td><b>Chấp nhận</b></td><td>Validation &amp; sẵn sàng triển khai. Gồm UAT, vận hành, hợp đồng, quy định, <b>alpha, beta</b>.</td></tr>
+      </tbody></table></div>
+      <h4>2.2.2 Bốn loại kiểm thử</h4>
+      <div class="tw"><table><thead><tr><th>Loại</th><th>Đánh giá</th></tr></thead><tbody>
+        <tr><td><b>Chức năng</b></td><td>"hệ thống <b>làm gì</b>" — đầy đủ, đúng đắn, phù hợp.</td></tr>
+        <tr><td><b>Phi chức năng</b></td><td>"hoạt động <b>tốt như thế nào</b>" — theo ISO/IEC 25010.</td></tr>
+        <tr><td><b>Hộp đen</b></td><td>Dựa trên <b>đặc tả</b> — kiểm tra hành vi.</td></tr>
+        <tr><td><b>Hộp trắng</b></td><td>Dựa trên <b>cấu trúc</b> — bao phủ cấu trúc bên trong.</td></tr>
+      </tbody></table></div>
+      <p><b>8 đặc tính phi chức năng (ISO 25010):</b> hiệu năng · tương thích · khả dụng · độ tin cậy · bảo trì · tính di động · an toàn (bảo mật). <em>Cả 4 loại áp dụng được ở mọi mức.</em></p>
+      <h4>2.2.3 Xác nhận vs Hồi quy</h4>
+      <div class="tw"><table><thead><tr><th>Xác nhận (confirmation)</th><th>Hồi quy (regression)</th></tr></thead><tbody>
+        <tr><td>Lỗi đã sửa <b>thành công</b> chưa.</td><td>Thay đổi <b>không gây tác động tiêu cực</b> ở nơi khác.</td></tr>
+      </tbody></table></div>
+      <div class="key"><span class="ic">🔑</span><p>Nên <b>phân tích ảnh hưởng</b> trước để xác định phạm vi hồi quy. Bộ hồi quy tăng dần → <b>rất phù hợp tự động hóa</b>.</p></div>
+
+      <h3 class="sub" id="c23">2.3 Kiểm thử Bảo trì</h3>
+      <p><b>Phạm vi phụ thuộc:</b> mức rủi ro thay đổi · kích thước hệ thống · quy mô thay đổi.</p>
+      <p><b>Yếu tố kích hoạt:</b> thay đổi phần mềm (cải tiến/sửa lỗi/vá khẩn) · nâng cấp/chuyển đổi môi trường · <strong>ngừng sử dụng</strong> (kiểm thử lưu trữ &amp; khôi phục dữ liệu).</p>
+    </section>
+
+    <!-- ===================== CHƯƠNG 3 ===================== -->
+    <section class="ch" id="ch3">
+      <div class="ch-head"><div class="ch-num">3</div><h2>Kiểm thử tĩnh</h2><div class="ch-min">80 phút · 4 câu</div></div>
+
+      <h3 class="sub">3.1 Cơ bản về Kiểm thử tĩnh</h3>
+      <p>Phần mềm <strong>không cần thực thi</strong>. Hai hình thức: <strong>rà soát</strong> (thủ công) &amp; <strong>phân tích tĩnh</strong> (công cụ). Áp dụng cho cả verification &amp; validation.</p>
+      <h4>3.1.1 Sản phẩm có thể kiểm thử tĩnh</h4>
+      <ul>
+        <li><b>Rà soát:</b> hầu như bất kỳ sản phẩm đọc-hiểu được (yêu cầu, code, kế hoạch, backlog, hợp đồng, mô hình).</li>
+        <li><b>Phân tích tĩnh:</b> cần sản phẩm <b>có cấu trúc</b> (mô hình, mã nguồn, JSON).</li>
+      </ul>
+      <h4>3.1.2 Giá trị</h4>
+      <p>Phát hiện lỗi <strong>sớm nhất</strong>; phát hiện lỗi KT động không thể (code chết, lỗi tài liệu); giúp bên liên quan thống nhất cách hiểu.</p>
+      <div class="key"><span class="ic">🔑</span><p>Rà soát <b>tốn kém</b> nhưng <b>tổng chi phí dự án thấp hơn</b> vì sửa lỗi sớm rẻ hơn.</p></div>
+      <h4>3.1.3 Tĩnh vs Động</h4>
+      <div class="tw"><table><thead><tr><th></th><th>Tĩnh</th><th>Động</th></tr></thead><tbody>
+        <tr><td>Thực thi</td><td>Không</td><td>Có</td></tr>
+        <tr><td>Phát hiện</td><td><b>Lỗi trực tiếp</b></td><td><b>Sự cố</b> → phân tích tìm lỗi</td></tr>
+        <tr><td>Áp dụng</td><td>Cả tài liệu (không thực thi)</td><td>Chỉ mã thực thi</td></tr>
+        <tr><td>Đặc tính</td><td>Không phụ thuộc thực thi (bảo trì)</td><td>Phụ thuộc thực thi (hiệu năng)</td></tr>
+      </tbody></table></div>
+
+      <h3 class="sub" id="c32">3.2 Phản hồi &amp; Quy trình Rà soát</h3>
+      <h4>3.2.2 Năm hoạt động rà soát (ISO/IEC 20246)</h4>
+      <p><b>Lập kế hoạch → Khởi tạo → Rà soát cá nhân → Trao đổi &amp; phân tích → Khắc phục &amp; báo cáo.</b></p>
+      <h4>3.2.3 Vai trò</h4>
+      <p>Quản lý · <strong>Tác giả</strong> · <strong>Điều phối viên</strong> (facilitator) · Thư ký · Người rà soát · Trưởng nhóm rà soát.</p>
+      <h4>3.2.4 Bốn loại rà soát (formal tăng dần)</h4>
+      <div class="tw"><table><thead><tr><th>Loại</th><th>Đặc điểm</th></tr></thead><tbody>
+        <tr><td><b>Không chính thức</b></td><td>Không quy trình cố định, không ghi nhận chính thức.</td></tr>
+        <tr><td><b>Walkthrough</b></td><td><b>Do TÁC GIẢ chủ trì</b>. Đa mục tiêu; rà soát cá nhân trước không bắt buộc.</td></tr>
+        <tr><td><b>Rà soát kỹ thuật</b></td><td>Người rà soát có <b>trình độ kỹ thuật</b>, do <b>điều phối viên</b> dẫn; đồng thuận kỹ thuật.</td></tr>
+        <tr><td><b>Đánh giá chuyên sâu</b> (inspection)</td><td><b>Chính thức nhất</b>; tối đa hóa phát hiện lỗi; <b>tác giả không làm trưởng nhóm/thư ký</b>.</td></tr>
+      </tbody></table></div>
+      <div class="key"><span class="ic">🔑</span><p><b>Không lấy việc đánh giá con người làm mục tiêu rà soát.</b> Cần mục tiêu &amp; tiêu chí kết thúc rõ ràng, đo lường được; hỗ trợ từ quản lý; biến thành văn hóa.</p></div>
+    </section>
+
+    <!-- ===================== CHƯƠNG 4 ===================== -->
+    <section class="ch" id="ch4">
+      <div class="ch-head"><div class="ch-num">4</div><h2>Phân tích và Thiết kế Test case</h2><div class="ch-min">390 phút · 11 câu</div></div>
+
+      <h3 class="sub">4.1 Tổng quan Kỹ thuật</h3>
+      <div class="tw"><table><thead><tr><th>Nhóm</th><th>Dựa trên</th><th>Đặc điểm</th></tr></thead><tbody>
+        <tr><td><b>Hộp đen</b></td><td>Đặc tả / hành vi</td><td>Test độc lập với code.</td></tr>
+        <tr><td><b>Hộp trắng</b></td><td>Cấu trúc / code</td><td>Test tạo được <b>sau khi</b> có code.</td></tr>
+        <tr><td><b>Kinh nghiệm</b></td><td>Kiến thức tester</td><td><b>Bổ trợ</b>; bắt lỗi hai nhóm kia bỏ sót.</td></tr>
+      </tbody></table></div>
+
+      <h3 class="sub" id="c42">4.2 Kỹ thuật Hộp đen</h3>
+      <h4><span class="k K3">K3</span> 4.2.1 Phân vùng Tương đương (EP)</h4>
+      <p>Chia dữ liệu thành <strong>vùng tương đương</strong> (xử lý giống nhau) → chỉ cần <strong>1 test case/vùng</strong>. Vùng <strong>hợp lệ</strong> &amp; <strong>không hợp lệ</strong>, không chồng lấn, không rỗng. Bao phủ 100% = mọi vùng test ≥1 lần. Nhiều tập → <span class="term">Each Choice</span> (không xét tổ hợp).</p>
+      <h4><span class="k K3">K3</span> 4.2.2 Phân tích Giá trị Biên (BVA)</h4>
+      <p>Kiểm tra tại <strong>biên</strong> của vùng — chỉ áp dụng vùng <strong>có thứ tự</strong>. <b>BVA 2 giá trị:</b> biên + giá trị liền kề. <b>BVA 3 giá trị:</b> biên + 2 lân cận (chặt chẽ hơn).</p>
+      <div class="key"><span class="ic">🔑</span><p><span class="term">if (x ≤ 10)</span> code sai thành <span class="term">if (x = 10)</span> → BVA 2 giá trị (10, 11) <b>không bắt được</b>, nhưng <b>x=9</b> (BVA 3 giá trị) bắt được.</p></div>
+      <h4><span class="k K3">K3</span> 4.2.3 Bảng Quyết định</h4>
+      <p>Tổ hợp <strong>điều kiện</strong> → <strong>hành động</strong>. Cột = một quy tắc. Ký hiệu: <span class="term">T</span> thỏa · <span class="term">F</span> không · <span class="term">–</span> không ảnh hưởng · <span class="term">N/A</span> không áp dụng · hành động <span class="term">X</span> xảy ra. <b>Limited-entry</b> (Boolean) vs <b>Extended-entry</b> (nhiều giá trị). Bao phủ 100% = mọi cột khả thi.</p>
+      <div class="key"><span class="ic">🔑</span><p>Số tổ hợp tăng theo <b>cấp số nhân</b> với số điều kiện → tối giản bảng hoặc dùng kiểm thử dựa vào rủi ro.</p></div>
+      <h4><span class="k K3">K3</span> 4.2.4 Chuyển đổi Trạng thái</h4>
+      <p>Sơ đồ: states + transitions + events + guard + actions, nhãn <span class="term">event [guard] / action</span>. Bảng trạng thái thể hiện rõ <strong>chuyển đổi không hợp lệ</strong> (ô trống).</p>
+      <div class="tw"><table><thead><tr><th>Tiêu chí bao phủ</th><th>Ghi chú</th></tr></thead><tbody>
+        <tr><td><b>Mọi trạng thái</b></td><td>Yếu nhất — có thể đạt mà không đi hết transition.</td></tr>
+        <tr><td><b>Chuyển đổi hợp lệ (0-switch)</b></td><td><b>Phổ biến nhất</b>. 100% ⇒ phủ hết trạng thái.</td></tr>
+        <tr><td><b>Mọi chuyển đổi</b></td><td>Mạnh nhất (gồm không hợp lệ); tối thiểu cho phần mềm an toàn cao.</td></tr>
+      </tbody></table></div>
+
+      <h3 class="sub" id="c43">4.3 Kỹ thuật Hộp trắng</h3>
+      <h4><span class="k K2">K2</span> 4.3.1 Kiểm thử Câu lệnh</h4>
+      <p>Bao phủ = câu lệnh đã chạy / tổng câu lệnh. 100% = mọi câu lệnh chạy ≥1 lần.</p>
+      <div class="key"><span class="ic">🔑</span><p>100% Statement <b>không</b> đảm bảo bắt hết lỗi (lỗi phụ thuộc dữ liệu, chia 0) và <b>không</b> phủ hết nhánh. <b>Thực thi ≠ phát hiện.</b></p></div>
+      <h4><span class="k K2">K2</span> 4.3.2 Kiểm thử Nhánh</h4>
+      <p>Nhánh = chuyển luồng điều khiển (if/then, switch, vòng lặp).</p>
+      <div class="key"><span class="ic">🔑</span><p><b>100% Branch ⇒ 100% Statement</b> (chiều ngược lại KHÔNG chắc). Branch mạnh hơn Statement.</p></div>
+      <h4><span class="k K2">K2</span> 4.3.3 Giá trị Hộp trắng</h4>
+      <p><b>Mạnh:</b> toàn bộ chương trình được xem xét; thước đo bao phủ khách quan. <b>Yếu:</b> nếu code <strong>thiếu</strong> một yêu cầu, hộp trắng <strong>không phát hiện</strong> (việc của hộp đen).</p>
+
+      <h3 class="sub" id="c44">4.4 Dựa trên Kinh nghiệm</h3>
+      <div class="tw"><table><thead><tr><th>Kỹ thuật</th><th>Nội dung</th></tr></thead><tbody>
+        <tr><td><b>Đoán lỗi</b></td><td>Dựa vào lỗi <b>đã từng xảy ra</b>, lỗi dev hay mắc. <span class="term">Fault attacks</span> = triển khai thực tế.</td></tr>
+        <tr><td><b>Kiểm thử khám phá</b></td><td>Thiết kế + thực thi + đánh giá <b>đồng thời</b>; session-based (dùng test charter). Hữu ích khi ít tài liệu / áp lực thời gian.</td></tr>
+        <tr><td><b>Dựa trên checklist</b></td><td>Test theo checklist; cần cập nhật thường xuyên; bao phủ cao hơn nhưng lặp lại thấp hơn.</td></tr>
+      </tbody></table></div>
+
+      <h3 class="sub" id="c45">4.5 Dựa trên Cộng tác</h3>
+      <p><em>Khác các kỹ thuật trên (phát hiện lỗi), nhóm này tập trung <strong>phòng tránh lỗi</strong> qua hợp tác.</em></p>
+      <h4>4.5.1 User Story cộng tác</h4>
+      <p><b>3 C's:</b> <strong>Card</strong> · <strong>Conversation</strong> · <strong>Confirmation</strong> (tiêu chí chấp nhận). <b>INVEST:</b> Independent, Negotiable, Valuable, Estimable, Small, Testable.</p>
+      <h4>4.5.2 Tiêu chí Chấp nhận</h4>
+      <p>Điều kiện để được chấp nhận → xem như khía cạnh kiểm thử. Hai dạng: <strong>hướng kịch bản</strong> (Given/When/Then) · <strong>hướng quy tắc</strong> (gạch đầu dòng / bảng).</p>
+      <h4><span class="k K3">K3</span> 4.5.3 ATDD</h4>
+      <p>Test-first: test tạo <strong>trước</strong> khi lập trình, bởi nhiều góc nhìn. Thứ tự: <strong>hợp lệ → không hợp lệ → phi chức năng</strong>. Test phủ mọi khía cạnh story, không vượt phạm vi, không trùng lặp.</p>
+    </section>
+
+    <!-- ===================== CHƯƠNG 5 ===================== -->
+    <section class="ch" id="ch5">
+      <div class="ch-head"><div class="ch-num">5</div><h2>Quản lý các Hoạt động Kiểm thử</h2><div class="ch-min">335 phút · 9 câu</div></div>
+
+      <h3 class="sub">5.1 Lập Kế hoạch Kiểm thử</h3>
+      <p><b>Kế hoạch KT</b> mô tả mục tiêu, nguồn lực, quy trình; là phương tiện giao tiếp. Nội dung: bối cảnh · giả định &amp; ràng buộc · bên liên quan · danh sách rủi ro · <strong>phương pháp tiếp cận</strong> · ngân sách &amp; lịch.</p>
+      <h4>5.1.3 Tiêu chí Bắt đầu &amp; Kết thúc</h4>
+      <p><b>Entry:</b> điều kiện tiên quyết (nguồn lực, testware, smoke test đạt). <b>Exit:</b> điều phải đạt để hoàn thành. Agile: <strong>DoD</strong> = kết thúc, <strong>DoR</strong> = bắt đầu.</p>
+      <div class="key"><span class="ic">🔑</span><p><b>Hết thời gian/ngân sách</b> cũng là tiêu chí kết thúc hợp lệ (nếu bên liên quan chấp nhận rủi ro).</p></div>
+      <h4><span class="k K3">K3</span> 5.1.4 Kỹ thuật Ước lượng</h4>
+      <div class="tw"><table><thead><tr><th>Kỹ thuật</th><th>Nhóm</th><th>Cách làm</th></tr></thead><tbody>
+        <tr><td>Dựa trên tỷ lệ</td><td>Số liệu</td><td>Tỷ lệ từ dự án cũ (dev:test = 3:2 → 600 ngày dev → 400 ngày test).</td></tr>
+        <tr><td>Ngoại suy</td><td>Số liệu</td><td>Đo sớm, ngoại suy (TB 3 chu kỳ gần nhất). Hợp mô hình lặp.</td></tr>
+        <tr><td>Wideband Delphi</td><td>Chuyên gia</td><td>Ước lượng độc lập → thảo luận → lặp. <b>Planning Poker</b> là biến thể.</td></tr>
+        <tr><td>Ba điểm</td><td>Chuyên gia</td><td>E = (a + 4m + b)/6; SD = (b−a)/6. Vd a=6,m=9,b=18 → 10 ± 2 giờ.</td></tr>
+      </tbody></table></div>
+      <h4><span class="k K3">K3</span> 5.1.5 Ưu tiên hóa Test Case</h4>
+      <p>Chiến lược: dựa vào <strong>rủi ro</strong> · dựa vào <strong>độ bao phủ</strong> (có biến thể bao phủ bổ sung) · dựa vào <strong>yêu cầu</strong>.</p>
+      <div class="key"><span class="ic">🔑</span><p>Nếu test ưu tiên cao <b>phụ thuộc</b> test ưu tiên thấp → test thấp vẫn phải chạy trước.</p></div>
+      <h4>5.1.6–5.1.7 Test Pyramid &amp; Testing Quadrants</h4>
+      <p><b>Tháp kiểm thử:</b> đáy = test nhỏ, nhanh, <strong>nhiều</strong> (unit); đỉnh = end-to-end, chậm, <strong>ít</strong>.</p>
+      <div class="tw"><table><thead><tr><th>Quadrant</th><th>Hướng</th><th>Nội dung</th></tr></thead><tbody>
+        <tr><td><b>Q1</b></td><td>Công nghệ · hỗ trợ nhóm</td><td>Component &amp; tích hợp; tự động, CI.</td></tr>
+        <tr><td><b>Q2</b></td><td>Nghiệp vụ · hỗ trợ nhóm</td><td>Chức năng, user story, API; tiêu chí chấp nhận.</td></tr>
+        <tr><td><b>Q3</b></td><td>Nghiệp vụ · đánh giá SP</td><td>Khám phá, khả dụng, UAT; thủ công.</td></tr>
+        <tr><td><b>Q4</b></td><td>Công nghệ · đánh giá SP</td><td>Smoke test, phi chức năng; tự động/công cụ.</td></tr>
+      </tbody></table></div>
+
+      <h3 class="sub" id="c52">5.2 Quản lý Rủi ro</h3>
+      <p><b>Hai hoạt động:</b> Phân tích rủi ro (nhận diện + đánh giá) &amp; Kiểm soát rủi ro (giảm thiểu + giám sát). Cách tiếp cận chọn/ưu tiên KT dựa vào rủi ro = <strong>kiểm thử dựa vào rủi ro</strong>.</p>
+      <div class="key"><span class="ic">🔑</span><p><b>Mức rủi ro = Khả năng xảy ra × Mức độ ảnh hưởng.</b></p></div>
+      <div class="tw"><table><thead><tr><th></th><th>Rủi ro dự án</th><th>Rủi ro sản phẩm</th></tr></thead><tbody>
+        <tr><td>Liên quan</td><td>Quản lý &amp; kiểm soát dự án</td><td>Đặc tính chất lượng sản phẩm</td></tr>
+        <tr><td>Ví dụ</td><td>Chậm bàn giao, thiếu kỹ năng, nhà cung cấp</td><td>Sai chức năng, lỗ hổng bảo mật, hiệu năng kém</td></tr>
+      </tbody></table></div>
+      <p><b>Đánh giá rủi ro:</b> định lượng (nhân khả năng × ảnh hưởng) · định tính (ma trận rủi ro). <b>Ứng phó:</b> giảm thiểu bằng KT · chấp nhận · chuyển giao · dự phòng.</p>
+
+      <h3 class="sub" id="c53">5.3 Giám sát, Kiểm soát &amp; Kết thúc</h3>
+      <p><b>Giám sát</b> = thu thập thông tin → đánh giá tiến độ. <b>Kiểm soát</b> = dùng thông tin đó ra chỉ đạo điều chỉnh. <b>Kết thúc</b> = tổng hợp kinh nghiệm &amp; testware.</p>
+      <div class="tw"><table><thead><tr><th>Báo cáo tiến độ</th><th>Báo cáo kết thúc</th></tr></thead><tbody>
+        <tr><td>Định kỳ, ít trang trọng, hỗ trợ kiểm soát.</td><td>Một lần, theo biểu mẫu, tổng hợp.</td></tr>
+      </tbody></table></div>
+
+      <h3 class="sub" id="c54">5.4 Quản lý Cấu hình</h3>
+      <p>Xác định – kiểm soát – theo dõi testware. Hạng mục được duyệt → <strong>baseline</strong>, chỉ đổi qua kiểm soát thay đổi chính thức → hỗ trợ <strong>truy vết</strong> &amp; tái hiện kết quả.</p>
+
+      <h3 class="sub" id="c55">5.5 Quản lý Lỗi <span class="k K3">K3</span></h3>
+      <p>Bất thường có thể là lỗi, <strong>dương tính giả</strong>, hoặc yêu cầu cải tiến. Luồng: ghi nhận → phân tích &amp; phân loại → quyết định → <strong>đóng</strong>.</p>
+      <p><b>Nội dung báo cáo lỗi:</b> Bug ID · tóm tắt · ngày/người báo cáo · đối tượng &amp; môi trường · bối cảnh · <strong>bước tái hiện</strong> · <strong>kết quả mong đợi vs thực tế</strong> · mức nghiêm trọng · ưu tiên · trạng thái.</p>
+      <div class="key"><span class="ic">🔑</span><p><b>Severity</b> (mức nghiêm trọng — ảnh hưởng) khác <b>Priority</b> (mức ưu tiên sửa).</p></div>
+    </section>
+
+    <!-- ===================== CHƯƠNG 6 ===================== -->
+    <section class="ch" id="ch6">
+      <div class="ch-head"><div class="ch-num">6</div><h2>Công cụ Kiểm thử</h2><div class="ch-min">20 phút · 2 câu</div></div>
+
+      <h3 class="sub">6.1 Công cụ Hỗ trợ</h3>
+      <p>Các loại: <strong>quản lý kiểm thử</strong> · kiểm thử tĩnh · thiết kế &amp; triển khai · <strong>thực thi &amp; đo bao phủ</strong> · phi chức năng · <strong>DevOps</strong> (build, CI/CD) · cộng tác · ảo hóa/container · công cụ khác (kể cả bảng tính).</p>
+
+      <h3 class="sub" id="c62">6.2 Lợi ích &amp; Rủi ro Tự động hóa</h3>
+      <div class="key"><span class="ic">🔑</span><p>Chỉ <b>mua/triển khai công cụ không đảm bảo thành công</b> — cần nỗ lực triển khai, bảo trì, đào tạo.</p></div>
+      <div class="tw"><table><thead><tr><th>Lợi ích</th><th>Rủi ro</th></tr></thead><tbody>
+        <tr><td>Tiết kiệm thời gian (giảm việc thủ công lặp).</td><td>Kỳ vọng không thực tế về công cụ.</td></tr>
+        <tr><td>Giảm lỗi con người (nhất quán, lặp lại).</td><td>Ước lượng sai chi phí/công sức triển khai &amp; bảo trì.</td></tr>
+        <tr><td>Đánh giá khách quan (độ bao phủ, số liệu).</td><td>Dùng công cụ nơi thủ công phù hợp hơn.</td></tr>
+        <tr><td>Phát hiện lỗi sớm, time-to-market nhanh.</td><td>Phụ thuộc quá mức công cụ / nhà cung cấp.</td></tr>
+        <tr><td>Giải phóng thời gian cho test chuyên sâu.</td><td>Không tương thích nền tảng; không đáp ứng quy định.</td></tr>
+      </tbody></table></div>
+    </section>
+  </main>
+</div>
+
+<footer>Biên soạn bám sát đề cương chính thức ISTQB® CTFL v4.0.1 (bản tiếng Việt) · Sổ tay ôn tập cá nhân · Chúc bệ hạ thi tốt 👑</footer>
+
+<script>
+// reading progress
+const prog=document.getElementById('prog');
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  prog.style.width=p+'%';
+},{passive:true});
+
+// scroll-spy TOC
+const links=[...document.querySelectorAll('.toc a')];
+const map={};links.forEach(a=>{const id=a.getAttribute('href').slice(1);(map[id]=map[id]||[]).push(a);});
+const targets=[...document.querySelectorAll('section.ch, h3.sub, #ch1')];
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id; if(!id||!map[id])return;
+      links.forEach(a=>a.classList.remove('active'));
+      map[id].forEach(a=>a.classList.add('active'));
+    }
+  });
+},{rootMargin:'-64px 0px -70% 0px',threshold:0});
+document.querySelectorAll('[id]').forEach(el=>{ if(el.matches('section.ch,h3.sub')) io.observe(el); });
+
+// mobile drawer
+const toc=document.getElementById('toc'),scrim=document.getElementById('scrim'),menu=document.getElementById('menuBtn');
+function close(){toc.classList.remove('open');scrim.classList.remove('on');}
+menu.addEventListener('click',()=>{toc.classList.toggle('open');scrim.classList.toggle('on');});
+scrim.addEventListener('click',close);
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')close();});
+
+// theme
+const tb=document.getElementById('themeBtn');
+const saved=localStorage.getItem('istqb_theme'); if(saved)document.documentElement.setAttribute('data-theme',saved);
+tb.addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme');
+  const isDark=cur?cur==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+  const next=isDark?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('istqb_theme',next);
+});
+</script>
