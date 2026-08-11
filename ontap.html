@@ -1,0 +1,595 @@
+<title>ISTQB CTFL v4.0.1 — Bàn Ôn Tập</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --ground:#f4f2ec; --surface:#ffffff; --surface-2:#faf8f3;
+  --ink:#1d2130; --muted:#5b6070; --faint:#8a8f9d;
+  --line:#e5e1d6; --line-strong:#d6d1c2;
+  --accent:#c9820a; --accent-ink:#8a5600; --accent-soft:#f6ecd6;
+  --k1:#3a72a0; --k1-soft:#e4eef5;
+  --k2:#2f9276; --k2-soft:#e0f0ea;
+  --k3:#c05a3a; --k3-soft:#f6e4dd;
+  --good:#2f9276; --todo:#b9b3a4;
+  --shadow:0 1px 2px rgba(29,33,48,.05),0 6px 20px rgba(29,33,48,.06);
+  --radius:14px;
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#14161d; --surface:#1c1f28; --surface-2:#20242e;
+    --ink:#ecebe4; --muted:#a2a7b5; --faint:#787e8d;
+    --line:#2b2f3a; --line-strong:#3a3f4c;
+    --accent:#e8a63a; --accent-ink:#f2c877; --accent-soft:#33291680;
+    --k1:#6ba6d4; --k1-soft:#1e2c3a;
+    --k2:#5cc0a2; --k2-soft:#173029;
+    --k3:#e58a68; --k3-soft:#331f18;
+    --good:#5cc0a2; --todo:#565b68;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#14161d; --surface:#1c1f28; --surface-2:#20242e;
+  --ink:#ecebe4; --muted:#a2a7b5; --faint:#787e8d;
+  --line:#2b2f3a; --line-strong:#3a3f4c;
+  --accent:#e8a63a; --accent-ink:#f2c877; --accent-soft:#33291680;
+  --k1:#6ba6d4; --k1-soft:#1e2c3a;
+  --k2:#5cc0a2; --k2-soft:#173029;
+  --k3:#e58a68; --k3-soft:#331f18;
+  --good:#5cc0a2; --todo:#565b68;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.6;
+}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;text-wrap:balance;line-height:1.2;margin:0}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+
+/* Top bar */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;padding:12px 20px;max-width:1060px;margin:0 auto}
+.brand{display:flex;flex-direction:column;min-width:0}
+.brand .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);font-weight:700}
+.brand h1{font-size:19px}
+.spacer{flex:1}
+.ring{--p:65;width:46px;height:46px;border-radius:50%;flex:none;
+  background:conic-gradient(var(--accent) calc(var(--p)*1%),var(--line-strong) 0);
+  display:grid;place-items:center}
+.ring span{width:34px;height:34px;border-radius:50%;background:var(--ground);display:grid;place-items:center;
+  font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.iconbtn{appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);
+  width:40px;height:40px;border-radius:10px;cursor:pointer;font-size:17px;display:grid;place-items:center}
+.iconbtn:hover{border-color:var(--accent)}
+
+/* Tabs */
+nav.tabs{display:flex;gap:4px;overflow-x:auto;padding:8px 20px 0;max-width:1060px;margin:0 auto;
+  scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+.tab{appearance:none;border:0;background:transparent;color:var(--muted);cursor:pointer;
+  padding:10px 14px;font-size:14px;font-weight:600;white-space:nowrap;border-bottom:2px solid transparent;
+  font-family:inherit}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+main{padding:28px 0 80px}
+.panel{display:none;animation:fade .25s ease}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.lead{color:var(--muted);max-width:64ch;margin:0 0 22px}
+h2.sec{font-size:24px;margin-bottom:4px}
+.eyebrow-row{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);font-weight:700;margin-bottom:18px}
+
+/* Cards / grid */
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:820px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
+@media(max-width:480px){.g4{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+
+.stat{display:flex;flex-direction:column;gap:2px}
+.stat .num{font-family:Georgia,serif;font-size:30px;font-weight:700;color:var(--accent-ink);font-variant-numeric:tabular-nums;line-height:1}
+.stat .lab{font-size:13px;color:var(--muted)}
+
+/* Weight bars */
+.wrow{display:grid;grid-template-columns:200px 1fr 42px;align-items:center;gap:12px;padding:7px 0}
+.wrow+.wrow{border-top:1px dashed var(--line)}
+.wname{font-size:14px}
+.wname b{font-weight:700}
+.wtrack{height:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.wfill{height:100%;background:var(--accent);border-radius:99px}
+.wfill.heavy{background:linear-gradient(90deg,var(--accent),var(--accent-ink))}
+.wnum{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;font-size:14px}
+@media(max-width:560px){.wrow{grid-template-columns:1fr 46px;grid-template-areas:"n n" "t v"}.wname{grid-area:n}.wtrack{grid-area:t}.wnum{grid-area:v}}
+
+.callout{background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line));
+  border-radius:var(--radius);padding:16px 18px}
+.callout h3{font-size:16px;margin-bottom:6px;color:var(--accent-ink)}
+.callout ul{margin:6px 0 0;padding-left:18px}
+.callout li{margin:3px 0}
+
+/* K badges */
+.k{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;letter-spacing:.02em;white-space:nowrap}
+.k.K1{background:var(--k1-soft);color:var(--k1)}
+.k.K2{background:var(--k2-soft);color:var(--k2)}
+.k.K3{background:var(--k3-soft);color:var(--k3)}
+
+/* Syllabus */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{appearance:none;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--muted);
+  padding:7px 13px;border-radius:99px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.chip:hover{border-color:var(--accent)}
+.chap{margin-bottom:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+.chap-h{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--surface-2);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.chap-n{width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--ground);display:grid;place-items:center;font-family:Georgia,serif;font-weight:700;flex:none}
+.chap-h h3{font-size:17px}
+.chap-meta{margin-left:auto;display:flex;gap:8px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.pill{background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:2px 9px;font-weight:600}
+.pill.hot{color:var(--k3);border-color:color-mix(in srgb,var(--k3) 40%,var(--line))}
+.lo{display:grid;grid-template-columns:58px 1fr auto auto;gap:12px;align-items:start;padding:11px 18px}
+.lo+.lo{border-top:1px solid var(--line)}
+.lo.sub{background:var(--surface-2)}
+.lo-code{font-family:ui-monospace,monospace;font-size:12px;color:var(--faint);padding-top:2px}
+.lo-txt{font-size:14.5px}
+.lo-txt small{display:block;color:var(--faint);font-size:12px;margin-top:2px}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:6px;flex:none}
+.dot.done{background:var(--good)}
+.dot.todo{background:var(--todo)}
+.sectionhead{grid-column:1/-1;font-weight:700;font-size:13px;color:var(--accent-ink);letter-spacing:.03em;padding:2px 0}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:-6px 0 18px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+/* Flashcards */
+.fc-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.fc-prog{font-size:14px;color:var(--muted)}
+.fc-prog b{color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.fc{perspective:1000px;height:170px;cursor:pointer}
+.fc-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.fc.flip .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column}
+.fc-front .qn{font-family:ui-monospace,monospace;font-size:12px;color:var(--accent-ink);font-weight:700}
+.fc-front .qt{font-family:Georgia,serif;font-size:18px;margin-top:6px}
+.fc-front .hint{margin-top:auto;font-size:12px;color:var(--faint)}
+.fc-back{transform:rotateY(180deg);background:var(--surface-2)}
+.fc-back .ans{font-size:13px;font-weight:700;color:var(--k2)}
+.fc-back .ans .letter{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 4px;border-radius:6px;background:var(--k2);color:var(--surface);margin-right:6px}
+.fc-back .kp{font-size:14px;margin-top:8px}
+.fc-known{margin-top:auto;align-self:flex-start;font-size:12px;font-weight:600;border:1px solid var(--line-strong);
+  background:var(--surface);color:var(--muted);border-radius:99px;padding:4px 10px;cursor:pointer;font-family:inherit}
+.fc.known .fc-face{border-color:var(--good)}
+.fc.known .fc-known{background:var(--good);color:var(--surface);border-color:var(--good)}
+.fc.known .fc-front::after{content:"✓ đã thuộc";position:absolute;top:12px;right:14px;font-size:11px;color:var(--good);font-weight:700}
+
+/* Principles / traps */
+.pr{display:flex;gap:12px;align-items:flex-start}
+.pr .n{font-family:Georgia,serif;font-size:22px;font-weight:700;color:var(--accent);line-height:1;flex:none;width:26px}
+.pr h3{font-size:16px;margin-bottom:2px}
+.pr p{margin:0;font-size:14px;color:var(--muted)}
+.trap{border-left:3px solid var(--k3);padding:4px 0 4px 14px}
+.trap .bad{font-size:14px}.trap .bad b{color:var(--k3)}
+.trap .good{font-size:14px;margin-top:2px}.trap .good b{color:var(--good)}
+.mnem{font-size:14px}
+.mnem b{color:var(--accent-ink)}
+
+/* K3 exercises */
+.k3card{border-top:3px solid var(--k3)}
+.k3card h3{font-size:16px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.k3card p{margin:0;font-size:14px;color:var(--muted)}
+.k3card .how{margin-top:8px;font-size:13px;background:var(--k3-soft);color:var(--ink);padding:8px 11px;border-radius:9px}
+
+footer{border-top:1px solid var(--line);color:var(--faint);font-size:13px;padding:22px 0;text-align:center}
+a{color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+</style>
+
+<header>
+  <div class="bar">
+    <div class="ring" aria-hidden="true"><span>65%</span></div>
+    <div class="brand">
+      <div class="eyebrow">ISTQB CTFL · v4.0.1</div>
+      <h1>Bàn Ôn Tập Kiểm Thử</h1>
+    </div>
+    <div class="spacer"></div>
+    <button class="iconbtn" id="themeBtn" title="Đổi giao diện sáng/tối" aria-label="Đổi giao diện">◐</button>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Chủ đề ôn tập">
+    <button class="tab" role="tab" aria-selected="true" data-p="overview">📊 Tổng quan</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="syllabus">🗺️ Bản đồ Syllabus</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="cards">🃏 Flashcards</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="ref">⚠️ Nguyên tắc &amp; Bẫy</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="k3">🧮 Bài tập K3</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <!-- OVERVIEW -->
+  <section class="panel on" id="overview" role="tabpanel">
+    <div class="eyebrow-row">Toàn cảnh kỳ thi</div>
+    <h2 class="sec">Bạn đang ở đâu trên đường đến chứng chỉ</h2>
+    <p class="lead">Đã ôn <b>26/40 câu luyện tập (65%)</b>. Điểm đậu kỳ thi thật cũng là <b>65%</b> — nhưng đừng dừng ở mép: hãy phủ chắc phần còn hổng để có biên an toàn.</p>
+
+    <div class="grid g4" style="margin-bottom:24px">
+      <div class="card stat"><span class="num">40</span><span class="lab">câu trắc nghiệm</span></div>
+      <div class="card stat"><span class="num">26</span><span class="lab">câu đậu (65%)</span></div>
+      <div class="card stat"><span class="num">60′</span><span class="lab">thời gian thi</span></div>
+      <div class="card stat"><span class="num">K3</span><span class="lab">mức nhận thức tối đa</span></div>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+      <h3 style="font-size:16px;margin-bottom:4px">Trọng số theo chương — số câu thi</h3>
+      <p style="color:var(--muted);font-size:13px;margin:0 0 12px">Chương 4 &amp; 5 chiếm <b>20/40 điểm</b>. Ưu tiên chắc hai chương này.</p>
+      <div id="weights"></div>
+    </div>
+
+    <div class="grid g2">
+      <div class="callout">
+        <h3>🎯 Vùng cần dồn sức (Q#27–40)</h3>
+        <ul>
+          <li><b>Chương 5 — toàn bộ</b> (9 câu, gần như chưa học): Test Plan, Rủi ro, Giám sát/Kiểm soát, Quản lý lỗi.</li>
+          <li><b>Hoàn thiện Chương 4</b>: Bảng quyết định, Phân vùng tương đương, tiêu chí chấp nhận.</li>
+          <li><b>Chương 6</b> (2 câu): nhỏ nhưng dễ ăn trọn điểm.</li>
+        </ul>
+      </div>
+      <div class="callout" style="background:var(--k3-soft);border-color:color-mix(in srgb,var(--k3) 40%,var(--line))">
+        <h3 style="color:var(--k3)">🧮 Đừng quên 8 mục tiêu K3</h3>
+        <ul>
+          <li>Đây là dạng <b>bài tập tính toán / thiết kế test case</b> — mất điểm nhiều nhất nếu không luyện tay.</li>
+          <li>Xem tab <b>“Bài tập K3”</b> để luyện từng dạng.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYLLABUS -->
+  <section class="panel" id="syllabus" role="tabpanel">
+    <div class="eyebrow-row">64 Learning Objectives · 6 chương</div>
+    <h2 class="sec">Bản đồ Syllabus</h2>
+    <p class="lead">Mọi mục tiêu học tập chính thức của đề cương v4.0.1, kèm mã <span class="mono">FL-x.y.z</span>, mức K, và trạng thái đối chiếu với Q#1–26.</p>
+    <div class="legend">
+      <span><i class="dot done" style="position:static;margin:0"></i> Đã cover qua Q#1–26</span>
+      <span><i class="dot todo" style="position:static;margin:0"></i> Chưa học</span>
+      <span><i class="k K1" style="padding:1px 6px">K1</i> nhớ · <i class="k K2" style="padding:1px 6px">K2</i> hiểu · <i class="k K3" style="padding:1px 6px">K3</i> áp dụng</span>
+    </div>
+    <div class="filters" role="group" aria-label="Lọc">
+      <button class="chip" aria-pressed="true" data-f="all">Tất cả</button>
+      <button class="chip" aria-pressed="false" data-f="todo">🔴 Chỉ chưa học</button>
+      <button class="chip" aria-pressed="false" data-f="k3">🧮 Chỉ K3</button>
+    </div>
+    <div id="chapters"></div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section class="panel" id="cards" role="tabpanel">
+    <div class="eyebrow-row">Q#1–26 · nhấp để lật</div>
+    <h2 class="sec">Flashcards ôn nhanh</h2>
+    <p class="lead">Nhấp thẻ để xem đáp án + điểm mấu chốt. Bấm <b>“đã thuộc”</b> để đánh dấu — tiến độ được lưu trên máy bạn.</p>
+    <div class="fc-top">
+      <div class="fc-prog">Đã thuộc: <b id="knownN">0</b>/<span id="totN">0</span></div>
+      <button class="chip" id="resetKnown">↺ Xoá đánh dấu</button>
+    </div>
+    <div class="grid g3" id="deck"></div>
+  </section>
+
+  <!-- REF -->
+  <section class="panel" id="ref" role="tabpanel">
+    <div class="eyebrow-row">Lý thuyết cốt lõi</div>
+    <h2 class="sec">7 Nguyên tắc &amp; Bẫy thường gặp</h2>
+    <p class="lead">Phần dễ ra câu hỏi “đánh lừa”. Thuộc nguyên tắc, nhận diện bẫy.</p>
+    <h3 style="font-size:18px;margin:10px 0 12px">Bảy nguyên tắc kiểm thử</h3>
+    <div class="grid g2" id="principles" style="margin-bottom:30px"></div>
+    <h3 style="font-size:18px;margin:10px 0 12px">10 cái bẫy trong phòng thi</h3>
+    <div class="grid g2" id="traps" style="margin-bottom:30px"></div>
+    <div class="card">
+      <h3 style="font-size:16px;margin-bottom:10px">🧠 Mnemonics nhanh</h3>
+      <div class="grid g2">
+        <p class="mnem"><b>7 Nguyên tắc:</b> Presence · Exhaustive · Early · Cluster · Pesticide · Context · Fallacy</p>
+        <p class="mnem"><b>Mức kiểm thử (CISA):</b> Component · Integration · System · Acceptance</p>
+        <p class="mnem"><b>Loại rà soát (IWTI):</b> Informal · Walkthrough (author-led) · Technical · Inspection</p>
+        <p class="mnem"><b>Coverage 1 chiều:</b> Branch ⇒ Statement (không có chiều ngược)</p>
+        <p class="mnem"><b>State transition:</b> “transition” → edge · “state” → node · mặc định → edge</p>
+        <p class="mnem"><b>Execution ≠ Detection:</b> chạy hết câu lệnh ≠ tìm ra lỗi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- K3 -->
+  <section class="panel" id="k3" role="tabpanel">
+    <div class="eyebrow-row">8 mục tiêu áp dụng · bắt buộc luyện tay</div>
+    <h2 class="sec">Bài tập K3</h2>
+    <p class="lead">Nhóm mục tiêu <b>K3 = Áp dụng</b>: phải tạo ra kết quả (thiết kế test case, tính toán). Đây là phần khó nhất của đề — luyện đến khi làm được không cần nghĩ.</p>
+    <div class="grid g2" id="k3list"></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  Biên soạn từ đề cương chính thức ISTQB® CTFL v4.0.1 (bản tiếng Việt) · Bàn ôn tập cá nhân · Chúc bệ hạ thi tốt 👑
+</footer>
+
+<script>
+const CH=[
+ {n:1,t:"Nền tảng Kiểm thử",min:180,q:8,los:[
+  {s:"1.1 Kiểm thử là gì?"},
+  {c:"1.1.1",k:"K1",x:"Xác định các mục tiêu kiểm thử điển hình",d:"Q1"},
+  {c:"1.1.2",k:"K2",x:"Phân biệt kiểm thử và gỡ lỗi (debugging)"},
+  {s:"1.2 Tại sao cần kiểm thử?"},
+  {c:"1.2.1",k:"K2",x:"Minh họa lý do kiểm thử là cần thiết"},
+  {c:"1.2.2",k:"K1",x:"Ghi nhớ quan hệ giữa kiểm thử và Đảm bảo Chất lượng (QA)"},
+  {c:"1.2.3",k:"K2",x:"Phân biệt nguyên nhân gốc rễ, sai sót, lỗi, sự cố"},
+  {s:"1.3 Các nguyên tắc kiểm thử"},
+  {c:"1.3.1",k:"K2",x:"Giải thích bảy nguyên tắc kiểm thử",d:"Q2,Q3"},
+  {s:"1.4 Hoạt động, sản phẩm & vai trò kiểm thử"},
+  {c:"1.4.1",k:"K2",x:"Giải thích các hoạt động kiểm thử & công việc liên quan",d:"Q4"},
+  {c:"1.4.2",k:"K2",x:"Giải thích ảnh hưởng của ngữ cảnh đến quy trình kiểm thử"},
+  {c:"1.4.3",k:"K2",x:"Phân biệt các sản phẩm kiểm thử (testware)"},
+  {c:"1.4.4",k:"K2",x:"Giải thích giá trị của khả năng truy xuất nguồn gốc"},
+  {c:"1.4.5",k:"K2",x:"So sánh các vai trò khác nhau trong kiểm thử",d:"Q6"},
+  {s:"1.5 Kỹ năng cốt lõi & thực hành tốt"},
+  {c:"1.5.1",k:"K2",x:"Ví dụ về các kỹ năng chung cần thiết cho kiểm thử",d:"Q7"},
+  {c:"1.5.2",k:"K1",x:"Ghi nhớ lợi ích của cách tiếp cận toàn đội",d:"Q8"},
+  {c:"1.5.3",k:"K2",x:"Phân biệt lợi ích & hạn chế của tính độc lập"},
+ ]},
+ {n:2,t:"Kiểm thử Trong suốt Vòng đời PTPM",min:130,q:6,los:[
+  {s:"2.1 Kiểm thử theo ngữ cảnh SDLC"},
+  {c:"2.1.1",k:"K2",x:"Ảnh hưởng của mô hình PTPM được chọn đến kiểm thử",d:"Q5,Q9"},
+  {c:"2.1.2",k:"K1",x:"Ghi nhớ thực hành kiểm thử tốt cho mọi mô hình PTPM"},
+  {c:"2.1.3",k:"K1",x:"Ghi nhớ ví dụ phương pháp phát triển hướng kiểm thử trước",d:"Q10"},
+  {c:"2.1.4",k:"K2",x:"Tóm tắt cách DevOps ảnh hưởng đến kiểm thử"},
+  {c:"2.1.5",k:"K2",x:"Giải thích khái niệm shift left",d:"Q11"},
+  {c:"2.1.6",k:"K2",x:"Retrospective như cơ chế cải tiến quy trình",d:"Q12"},
+  {s:"2.2 Các mức & loại kiểm thử"},
+  {c:"2.2.1",k:"K2",x:"Phân biệt các mức kiểm thử",d:"Q13"},
+  {c:"2.2.2",k:"K2",x:"Phân biệt các loại kiểm thử"},
+  {c:"2.2.3",k:"K2",x:"Phân biệt kiểm thử xác nhận & hồi quy",d:"Q14"},
+  {s:"2.3 Kiểm thử bảo trì"},
+  {c:"2.3.1",k:"K2",x:"Tóm tắt kiểm thử bảo trì & yếu tố kích hoạt"},
+ ]},
+ {n:3,t:"Kiểm thử tĩnh",min:80,q:4,los:[
+  {s:"3.1 Cơ bản về kiểm thử tĩnh"},
+  {c:"3.1.1",k:"K1",x:"Nhận biết sản phẩm công việc kiểm tra bằng kiểm thử tĩnh"},
+  {c:"3.1.2",k:"K2",x:"Giải thích giá trị của kiểm thử tĩnh",d:"Q15"},
+  {c:"3.1.3",k:"K2",x:"So sánh kiểm thử tĩnh vs động"},
+  {s:"3.2 Phản hồi & quy trình rà soát"},
+  {c:"3.2.1",k:"K1",x:"Lợi ích của phản hồi sớm & thường xuyên"},
+  {c:"3.2.2",k:"K2",x:"Tóm tắt hoạt động trong quy trình rà soát"},
+  {c:"3.2.3",k:"K1",x:"Trách nhiệm các vai trò chính khi rà soát"},
+  {c:"3.2.4",k:"K2",x:"So sánh các loại rà soát",d:"Q17"},
+  {c:"3.2.5",k:"K1",x:"Yếu tố buổi rà soát thành công",d:"Q18"},
+ ]},
+ {n:4,t:"Phân tích & Thiết kế Test case",min:390,q:11,hot:1,los:[
+  {s:"4.1 Tổng quan kỹ thuật kiểm thử"},
+  {c:"4.1.1",k:"K2",x:"Phân biệt kỹ thuật hộp đen / hộp trắng / kinh nghiệm",d:"Q19,Q25"},
+  {s:"4.2 Kỹ thuật hộp đen"},
+  {c:"4.2.1",k:"K3",x:"Áp dụng phân vùng tương đương (EP)"},
+  {c:"4.2.2",k:"K3",x:"Áp dụng phân tích giá trị biên (BVA)",d:"Q20,Q21"},
+  {c:"4.2.3",k:"K3",x:"Áp dụng kiểm thử bảng quyết định"},
+  {c:"4.2.4",k:"K3",x:"Áp dụng kiểm thử chuyển đổi trạng thái",d:"Q23"},
+  {s:"4.3 Kỹ thuật hộp trắng"},
+  {c:"4.3.1",k:"K2",x:"Giải thích kiểm thử câu lệnh & độ bao phủ",d:"Q24"},
+  {c:"4.3.2",k:"K2",x:"Giải thích kiểm thử nhánh & độ bao phủ"},
+  {c:"4.3.3",k:"K2",x:"Giải thích giá trị của kiểm thử hộp trắng",d:"Q25"},
+  {s:"4.4 Kỹ thuật dựa vào kinh nghiệm"},
+  {c:"4.4.1",k:"K2",x:"Giải thích đoán lỗi (error guessing)",d:"Q26"},
+  {c:"4.4.2",k:"K2",x:"Giải thích kiểm thử khám phá"},
+  {c:"4.4.3",k:"K2",x:"Giải thích kiểm thử dựa vào checklist"},
+  {s:"4.5 Cách tiếp cận dựa trên hợp tác"},
+  {c:"4.5.1",k:"K2",x:"Viết user story qua hợp tác với dev & nghiệp vụ"},
+  {c:"4.5.2",k:"K2",x:"Phân loại cách viết tiêu chí chấp nhận"},
+  {c:"4.5.3",k:"K3",x:"Dùng ATDD để thiết kế test case",d:"Q10"},
+ ]},
+ {n:5,t:"Quản lý các Hoạt động Kiểm thử",min:335,q:9,hot:1,los:[
+  {s:"5.1 Lập kế hoạch kiểm thử"},
+  {c:"5.1.1",k:"K2",x:"Mục đích & nội dung của kế hoạch kiểm thử"},
+  {c:"5.1.2",k:"K1",x:"Đóng góp của tester trong lập kế hoạch iteration & release"},
+  {c:"5.1.3",k:"K2",x:"So sánh tiêu chí bắt đầu & kết thúc"},
+  {c:"5.1.4",k:"K3",x:"Dùng kỹ thuật ước lượng tính công sức kiểm thử"},
+  {c:"5.1.5",k:"K3",x:"Áp dụng ưu tiên hóa test case"},
+  {c:"5.1.6",k:"K1",x:"Ghi nhớ khái niệm tháp kiểm thử (test pyramid)"},
+  {c:"5.1.7",k:"K2",x:"Tóm tắt testing quadrants & quan hệ với mức/loại"},
+  {s:"5.2 Quản lý rủi ro"},
+  {c:"5.2.1",k:"K1",x:"Mức rủi ro = khả năng xảy ra × mức độ ảnh hưởng"},
+  {c:"5.2.2",k:"K2",x:"Phân biệt rủi ro dự án & rủi ro sản phẩm"},
+  {c:"5.2.3",k:"K2",x:"Phân tích rủi ro sản phẩm ảnh hưởng mức độ & phạm vi"},
+  {c:"5.2.4",k:"K2",x:"Biện pháp ứng phó với rủi ro sản phẩm"},
+  {s:"5.3 Giám sát, kiểm soát & hoàn tất kiểm thử"},
+  {c:"5.3.1",k:"K1",x:"Ghi nhớ các chỉ số (metrics) dùng trong kiểm thử"},
+  {c:"5.3.2",k:"K2",x:"Mục đích, nội dung, đối tượng của báo cáo kiểm thử"},
+  {c:"5.3.3",k:"K2",x:"Truyền đạt trạng thái kiểm thử"},
+  {s:"5.4 Quản lý cấu hình"},
+  {c:"5.4.1",k:"K2",x:"Cách quản lý cấu hình hỗ trợ kiểm thử"},
+  {s:"5.5 Quản lý lỗi"},
+  {c:"5.5.1",k:"K3",x:"Chuẩn bị báo cáo lỗi (defect report)"},
+ ]},
+ {n:6,t:"Công cụ Kiểm thử",min:20,q:2,los:[
+  {s:"6.1 Hỗ trợ kiểm thử bằng công cụ"},
+  {c:"6.1.1",k:"K2",x:"Các loại công cụ khác nhau hỗ trợ hoạt động kiểm thử"},
+  {s:"6.2 Lợi ích & rủi ro của tự động hóa"},
+  {c:"6.2.1",k:"K1",x:"Ghi nhớ lợi ích & rủi ro của tự động hóa kiểm thử"},
+ ]},
+];
+
+const QS=[
+ [1,"Mục tiêu kiểm thử","C","Giảm rủi ro + xây dựng sự tự tin (KHÔNG phải chứng minh vô lỗi)"],
+ [2,"Kiểm thử sớm","A","Tester tham gia suốt SDLC → phát hiện lỗi sớm"],
+ [3,"Nghịch lý thuốc trừ sâu","A","Test lặp mãi sẽ chai → phải làm mới / tiến hóa test"],
+ [4,"Phân tích kiểm thử","B","Xác định test CONDITIONS (không phải ước lượng/thiết kế/thực thi)"],
+ [5,"Yếu tố chọn test approach","B","i, iii, iv (SDLC, rủi ro, quy định pháp lý)"],
+ [6,"Vai trò kiểm thử (kỹ thuật)","a+e","Cấu hình môi trường + phân tích test basis (KHÔNG phải quản lý d)"],
+ [7,"Kỹ năng tester","b","i, iii, v (Domain, đồng đội, tư duy phản biện)"],
+ [8,"Cách tiếp cận toàn đội","d","Tester + nghiệp vụ cùng viết acceptance tests"],
+ [9,"Các mô hình SDLC","d","Sequential, Incremental, Iterative đều có kiểm thử"],
+ [10,"ATDD","c","Test DẪN DẮT phát triển (không phải viết sau khi code)"],
+ [11,"Shift-Left","c","Perf test ở component level ≠ shift-left"],
+ [12,"Retrospective","c","Điểm yếu quy trình → phân tích → cải tiến"],
+ [13,"Mức kiểm thử & loại lỗi","a","1D, 2B, 3A, 4C (khớp loại lỗi với mức)"],
+ [14,"Kiểm thử hồi quy","b","(5),(7) = thay đổi trạng thái chuyển tiếp (fail→pass)"],
+ [15,"Lợi ích kiểm thử tĩnh","a","SAI: rẻ vì phát hiện lỗi MUỘN — thực ra vì phát hiện SỚM"],
+ [17,"Loại rà soát","b","Walkthrough = do tác giả dẫn dắt (author-led)"],
+ [18,"Rà soát thành công","d","“Biết ơn lỗi” = văn hóa hậu-review, KHÔNG phải success factor"],
+ [19,"Dựa vào kinh nghiệm","c","Dựa vào KIẾN THỨC của tester về phần mềm & domain"],
+ [20,"Bao phủ 2-value BVA","b","4 test cases"],
+ [21,"Statement coverage BVA","a","50% (6/12 giá trị biên)"],
+ [23,"Bao phủ transition","d","3 test cases (phủ hết 7 transitions)"],
+ [24,"100% Statement","a","Câu lệnh lỗi được THỰC THI (không phải được PHÁT HIỆN)"],
+ [25,"Kiểm thử hộp trắng","d","KHÔNG tìm thiếu requirement (đó là việc của hộp đen)"],
+ [26,"Đoán lỗi","a","Dùng kiến thức + kinh nghiệm về các lỗi ĐÃ TỪNG xảy ra"],
+];
+
+const PR=[
+ ["1","Thể hiện sự HIỆN DIỆN của lỗi","Test chứng minh CÓ lỗi, không chứng minh vô lỗi."],
+ ["2","Kiểm thử toàn bộ là BẤT KHẢ THI","Không thể test hết mọi tổ hợp → ưu tiên theo rủi ro."],
+ ["3","Kiểm thử SỚM (shift-left)","Test từ pha requirement → lỗi rẻ hơn khi sửa."],
+ ["4","Lỗi TẬP TRUNG (cluster)","Lỗi dồn vào vài module → dồn lực vào đó."],
+ ["5","Nghịch lý THUỐC TRỪ SÂU","Test lặp mãi sẽ chai → phải làm mới, đổi dữ liệu/cách."],
+ ["6","Phụ thuộc NGỮ CẢNH","E-commerce ≠ y tế → cách test khác nhau."],
+ ["7","Ngộ nhận VẮNG LỖI","Không tìm thấy lỗi ≠ sản phẩm tốt/đúng nhu cầu."],
+];
+
+const TRAPS=[
+ ["Test để chứng minh vô lỗi","Test để giảm rủi ro + xây dựng sự tự tin"],
+ ["Testing = vai trò quản lý","Testing = kỹ thuật (phân tích / thiết kế / thực thi)"],
+ ["Phân tích = ước lượng công sức","Phân tích = xác định test conditions"],
+ ["Pesticide: chạy lại tìm lỗi mới","Test phải TIẾN HÓA mới còn hiệu quả"],
+ ["System Design ↔ Integration Test","System Design ↔ System Test (khớp phạm vi)"],
+ ["100% Statement = phủ mọi nhánh","Chỉ phủ mọi CÂU LỆNH, không phủ nhánh/đường đi"],
+ ["Hộp trắng tìm thiếu requirement","Hộp trắng tìm lỗi LOGIC code"],
+ ["“Coverage” mặc định = state","Mặc định = TRANSITION (edge) coverage"],
+ ["“Biết ơn lỗi” = yếu tố rà soát thành công","Đó là văn hóa hậu-review"],
+ ["Mọi test sớm = shift-left","Phải SỚM HƠN vị trí thông thường trong vòng đời"],
+];
+
+const K3=[
+ ["4.2.1","Phân vùng tương đương (EP)","Chia miền dữ liệu thành các lớp mà mọi giá trị cho kết quả như nhau.","Mỗi lớp (hợp lệ & không hợp lệ) → chọn 1 đại diện. Coverage = lớp đã phủ / tổng lớp."],
+ ["4.2.2","Phân tích giá trị biên (BVA)","Lỗi hay nằm ở biên của phân vùng.","2-value: biên + giá trị liền kề. 3-value: thêm giá trị ngay trong. Tính coverage = biên đã test / tổng."],
+ ["4.2.3","Bảng quyết định","Tổ hợp điều kiện → hành động.","Số rule = tích số giá trị của các điều kiện (2 điều kiện nhị phân → 4 rule). Phủ mỗi cột = 1 test case."],
+ ["4.2.4","Chuyển đổi trạng thái","States + transitions + events + actions.","“transition” → phủ cạnh; “state” → phủ nút; mặc định phủ transition. Đếm đủ transition hợp lệ."],
+ ["4.5.3","ATDD","Suy test case từ tiêu chí chấp nhận, trước khi code.","Mỗi acceptance criterion → ≥1 test (đường thành công + ngoại lệ + biên)."],
+ ["5.1.4","Ước lượng công sức","Tính effort kiểm thử cần thiết.","2 nhóm: metrics-based (dựa số liệu quá khứ) & expert-based (chuyên gia/đội ước lượng)."],
+ ["5.1.5","Ưu tiên hóa test case","Xếp thứ tự chạy test.","3 tiêu chí: theo rủi ro, theo độ bao phủ, theo yêu cầu (requirement/priority)."],
+ ["5.5.1","Viết báo cáo lỗi","Defect report rõ ràng, tái hiện được.","Có: ID, tóm tắt, bước tái hiện, kết quả mong đợi vs thực tế, mức nghiêm trọng/ưu tiên, trạng thái."],
+];
+
+/* ---------- render ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+
+// weights
+(()=>{const wrap=$("#weights");const max=11;
+ CH.forEach(c=>{
+  const r=el("div","wrow");
+  r.innerHTML=`<div class="wname">Ch.${c.n} · <b>${c.t}</b></div>
+   <div class="wtrack"><div class="wfill ${c.hot?'heavy':''}" style="width:${c.q/max*100}%"></div></div>
+   <div class="wnum">${c.q}</div>`;
+  wrap.appendChild(r);
+ });
+})();
+
+// syllabus
+function renderChapters(f="all"){
+ const wrap=$("#chapters");wrap.innerHTML="";
+ CH.forEach(c=>{
+  const rows=[];let visible=0;
+  c.los.forEach(l=>{
+   if(l.s){rows.push(`<div class="lo sub"><div class="sectionhead">${l.s}</div></div>`);return;}
+   const done=!!l.d;
+   if(f==="todo"&&done)return;
+   if(f==="k3"&&l.k!=="K3")return;
+   visible++;
+   rows.push(`<div class="lo">
+     <div class="lo-code">${l.c}</div>
+     <div class="lo-txt">${l.x}${l.d?`<small>✔ ${l.d}</small>`:``}</div>
+     <div><span class="k ${l.k}">${l.k}</span></div>
+     <div class="dot ${done?'done':'todo'}" title="${done?'đã học':'chưa học'}"></div>
+   </div>`);
+  });
+  // strip section heads that have no following visible rows when filtering
+  if(visible===0)return;
+  const box=el("div","chap");
+  box.innerHTML=`<div class="chap-h">
+     <div class="chap-n">${c.n}</div><h3>${c.t}</h3>
+     <div class="chap-meta"><span class="pill">${c.min}′</span><span class="pill ${c.hot?'hot':''}">${c.q} câu thi</span></div>
+   </div>${rows.join("")}`;
+  wrap.appendChild(box);
+ });
+}
+renderChapters();
+document.querySelectorAll(".filters .chip").forEach(b=>{
+ b.addEventListener("click",()=>{
+  document.querySelectorAll(".filters .chip").forEach(x=>x.setAttribute("aria-pressed","false"));
+  b.setAttribute("aria-pressed","true");
+  renderChapters(b.dataset.f);
+ });
+});
+
+// flashcards
+const KEY="istqb_known_v1";
+let known=JSON.parse(localStorage.getItem(KEY)||"{}");
+function renderDeck(){
+ const deck=$("#deck");deck.innerHTML="";
+ QS.forEach(q=>{
+  const id="q"+q[0];const isK=!!known[id];
+  const card=el("div","fc"+(isK?" known":""));
+  card.innerHTML=`<div class="fc-inner">
+    <div class="fc-face fc-front">
+      <div class="qn">Q#${q[0]}</div><div class="qt">${q[1]}</div>
+      <div class="hint">nhấp để lật ›</div>
+    </div>
+    <div class="fc-face fc-back">
+      <div class="ans"><span class="letter">${q[2]}</span>Đáp án</div>
+      <div class="kp">${q[3]}</div>
+      <button class="fc-known" type="button">${isK?'✓ đã thuộc':'đánh dấu đã thuộc'}</button>
+    </div>
+  </div>`;
+  card.addEventListener("click",e=>{if(e.target.closest(".fc-known"))return;card.classList.toggle("flip");});
+  card.querySelector(".fc-known").addEventListener("click",()=>{
+   known[id]=!known[id];if(!known[id])delete known[id];
+   localStorage.setItem(KEY,JSON.stringify(known));renderDeck();updateKnown();
+  });
+  deck.appendChild(card);
+ });
+}
+function updateKnown(){$("#knownN").textContent=Object.keys(known).length;$("#totN").textContent=QS.length;}
+renderDeck();updateKnown();
+$("#resetKnown").addEventListener("click",()=>{known={};localStorage.removeItem(KEY);renderDeck();updateKnown();});
+
+// principles
+$("#principles").append(...PR.map(p=>el("div","card pr",`<div class="n">${p[0]}</div><div><h3>${p[1]}</h3><p>${p[2]}</p></div>`)));
+// traps
+$("#traps").append(...TRAPS.map(t=>el("div","card trap",`<div class="bad"><b>✗ Bẫy:</b> ${t[0]}</div><div class="good"><b>✓ Đúng:</b> ${t[1]}</div>`)));
+// k3
+$("#k3list").append(...K3.map(k=>el("div","card k3card",
+  `<h3><span class="k K3">K3</span> ${k[1]} <span class="mono" style="font-size:12px;color:var(--faint);font-weight:400">${k[0]}</span></h3>
+   <p>${k[2]}</p><div class="how"><b>Cách làm:</b> ${k[3]}</div>`)));
+
+// tabs
+const tabs=document.querySelectorAll(".tab");
+tabs.forEach(t=>t.addEventListener("click",()=>{
+ tabs.forEach(x=>x.setAttribute("aria-selected","false"));
+ t.setAttribute("aria-selected","true");
+ document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
+ $("#"+t.dataset.p).classList.add("on");
+ window.scrollTo({top:0,behavior:"smooth"});
+}));
+
+// theme
+const tb=$("#themeBtn");
+const saved=localStorage.getItem("istqb_theme");
+if(saved)document.documentElement.setAttribute("data-theme",saved);
+tb.addEventListener("click",()=>{
+ const cur=document.documentElement.getAttribute("data-theme");
+ const isDark=cur? cur==="dark" : matchMedia("(prefers-color-scheme:dark)").matches;
+ const next=isDark?"light":"dark";
+ document.documentElement.setAttribute("data-theme",next);
+ localStorage.setItem("istqb_theme",next);
+});
+</script>
