@@ -200,6 +200,7 @@ a{color:var(--accent-ink)}
       <p>Là <strong>hai hoạt động riêng biệt</strong>. Gỡ lỗi (không phải kiểm thử): <strong>tái hiện → chẩn đoán → sửa lỗi</strong>. Sau sửa: <strong>kiểm thử xác nhận</strong> rồi <strong>kiểm thử hồi quy</strong>.</p>
 
       <h3 class="sub">1.2 Tại sao cần kiểm thử?</h3>
+      <h4>1.2.1 Đóng góp của kiểm thử vào thành công</h4>
       <p><b>Đóng góp:</b> phát hiện lỗi hiệu quả chi phí (gián tiếp nâng chất lượng), đánh giá trực tiếp chất lượng để quyết định phát hành, là <strong>đại diện gián tiếp cho người dùng</strong>, đáp ứng yêu cầu hợp đồng/pháp lý.</p>
       <h4>1.2.2 Kiểm thử (QC) vs Đảm bảo Chất lượng (QA)</h4>
       <div class="tw"><table><thead><tr><th></th><th>Kiểm thử (QC)</th><th>QA</th></tr></thead><tbody>
@@ -237,6 +238,8 @@ a{color:var(--accent-ink)}
         <tr><td>Hoàn tất</td><td>Xử lý lỗi còn lại, lưu testware, rút bài học, báo cáo.</td></tr>
       </tbody></table></div>
       <div class="key"><span class="ic">🔑</span><p>Các hoạt động thường <b>lặp/song song</b>. Nhớ: <b>Phân tích = cái gì</b>, <b>Thiết kế = như thế nào</b>.</p></div>
+      <h4>1.4.2 Quy trình kiểm thử theo ngữ cảnh</h4>
+      <p>Cách thực hiện các hoạt động kiểm thử phụ thuộc nhiều <strong>yếu tố ngữ cảnh</strong>: bên liên quan · thành viên nhóm · lĩnh vực nghiệp vụ · yếu tố kỹ thuật · ràng buộc dự án · yếu tố tổ chức · SDLC · công cụ.</p>
       <h4>1.4.3 Testware (sản phẩm kiểm thử)</h4>
       <p>Đầu ra của mỗi hoạt động: kế hoạch/lịch/danh sách rủi ro · báo cáo tiến độ · khía cạnh KT · test case &amp; test charter · test procedure/script/suite, stub/driver/simulator · nhật ký &amp; báo cáo lỗi · báo cáo hoàn tất.</p>
       <h4>1.4.4 Truy vết (traceability)</h4>
@@ -249,6 +252,7 @@ a{color:var(--accent-ink)}
       <div class="key"><span class="ic">🔑</span><p>Một người có thể giữ cả hai vai trò. Testing là hoạt động <b>kỹ thuật</b>, không phải quản lý.</p></div>
 
       <h3 class="sub">1.5 Kỹ năng &amp; Thực hành Tốt</h3>
+      <h4>1.5.1 Các kỹ năng cần thiết chung</h4>
       <p><b>Kỹ năng cần thiết:</b> kiến thức kiểm thử · cẩn thận/tỉ mỉ/tò mò · <strong>giao tiếp &amp; làm việc nhóm</strong> · tư duy phân tích/phản biện · kiến thức kỹ thuật · <strong>kiến thức nghiệp vụ</strong>.</p>
       <div class="key"><span class="ic">🔑</span><p>Tester thường truyền "tin xấu" → <b>giao tiếp</b> cực kỳ quan trọng; truyền đạt lỗi theo hướng <b>xây dựng</b> (chú ý confirmation bias).</p></div>
       <h4>1.5.2 Cách tiếp cận Toàn Đội ngũ (Whole Team)</h4>
@@ -267,7 +271,10 @@ a{color:var(--accent-ink)}
 
       <h3 class="sub">2.1 Kiểm thử theo Bối cảnh SDLC</h3>
       <p><b>Ba nhóm mô hình:</b> <strong>Tuần tự</strong> (Waterfall, V-model) · <strong>Lặp</strong> (Spiral, Prototyping) · <strong>Gia tăng</strong> (Unified Process). Phương pháp Agile: ATDD, BDD, DDD, XP, FDD, Kanban, Lean, Scrum, TDD.</p>
+      <h4>2.1.1 Ảnh hưởng của SDLC đến kiểm thử</h4>
       <p><b>Ảnh hưởng đến KT:</b> phạm vi &amp; thời điểm · chi tiết tài liệu · kỹ thuật · mức tự động hóa · vai trò tester. Agile → dùng nhiều kỹ thuật <strong>dựa trên kinh nghiệm</strong> &amp; tự động hóa hồi quy.</p>
+      <h4>2.1.2 Thực hành kiểm thử tốt (mọi SDLC)</h4>
+      <p>Mỗi hoạt động phát triển có <strong>một hoạt động kiểm thử tương ứng</strong>; mỗi mức KT có mục tiêu riêng (tránh trùng lặp); phân tích &amp; thiết kế test <strong>bắt đầu sớm</strong> trong giai đoạn tương ứng; tester <strong>rà soát bản nháp sớm</strong> (hỗ trợ shift-left).</p>
       <h4>2.1.3 Test-first (dẫn dắt phát triển)</h4>
       <div class="tw"><table><thead><tr><th>Phương pháp</th><th>Đặc điểm</th></tr></thead><tbody>
         <tr><td><b>TDD</b></td><td>Test trước → viết code đáp ứng → tái cấu trúc.</td></tr>
@@ -306,6 +313,7 @@ a{color:var(--accent-ink)}
       <div class="key"><span class="ic">🔑</span><p>Nên <b>phân tích ảnh hưởng</b> trước để xác định phạm vi hồi quy. Bộ hồi quy tăng dần → <b>rất phù hợp tự động hóa</b>.</p></div>
 
       <h3 class="sub">2.3 Kiểm thử Bảo trì</h3>
+      <h4>2.3.1 Kiểm thử bảo trì &amp; yếu tố kích hoạt</h4>
       <p><b>Phạm vi phụ thuộc:</b> mức rủi ro thay đổi · kích thước hệ thống · quy mô thay đổi.</p>
       <p><b>Yếu tố kích hoạt:</b> thay đổi phần mềm (cải tiến/sửa lỗi/vá khẩn) · nâng cấp/chuyển đổi môi trường · <strong>ngừng sử dụng</strong> (kiểm thử lưu trữ &amp; khôi phục dữ liệu).</p>
     </section>
@@ -336,6 +344,8 @@ a{color:var(--accent-ink)}
       </tbody></table></div>
 
       <h3 class="sub">3.2 Phản hồi &amp; Quy trình Rà soát</h3>
+      <h4>3.2.1 Lợi ích phản hồi sớm &amp; thường xuyên</h4>
+      <p>Truyền đạt sớm vấn đề chất lượng; tránh làm lại tốn kém; ngăn hiểu sai yêu cầu; giúp đội tập trung vào tính năng <strong>giá trị cao</strong> nhất.</p>
       <h4>3.2.2 Năm hoạt động rà soát (ISO/IEC 20246)</h4>
       <p><b>Lập kế hoạch → Khởi tạo → Rà soát cá nhân → Trao đổi &amp; phân tích → Khắc phục &amp; báo cáo.</b></p>
       <h4>3.2.3 Vai trò</h4>
@@ -347,6 +357,7 @@ a{color:var(--accent-ink)}
         <tr><td><b>Rà soát kỹ thuật</b></td><td>Người rà soát có <b>trình độ kỹ thuật</b>, do <b>điều phối viên</b> dẫn; đồng thuận kỹ thuật.</td></tr>
         <tr><td><b>Đánh giá chuyên sâu</b> (inspection)</td><td><b>Chính thức nhất</b>; tối đa hóa phát hiện lỗi; <b>tác giả không làm trưởng nhóm/thư ký</b>.</td></tr>
       </tbody></table></div>
+      <h4>3.2.5 Yếu tố thành công của rà soát</h4>
       <div class="key"><span class="ic">🔑</span><p><b>Không lấy việc đánh giá con người làm mục tiêu rà soát.</b> Cần mục tiêu &amp; tiêu chí kết thúc rõ ràng, đo lường được; hỗ trợ từ quản lý; biến thành văn hóa.</p></div>
     </section>
     <div class="pager"><button class="prev"></button><button class="next"></button></div>
@@ -393,9 +404,9 @@ a{color:var(--accent-ink)}
 
       <h3 class="sub">4.4 Dựa trên Kinh nghiệm</h3>
       <div class="tw"><table><thead><tr><th>Kỹ thuật</th><th>Nội dung</th></tr></thead><tbody>
-        <tr><td><b>Đoán lỗi</b></td><td>Dựa vào lỗi <b>đã từng xảy ra</b>, lỗi dev hay mắc. <span class="term">Fault attacks</span> = triển khai thực tế.</td></tr>
-        <tr><td><b>Kiểm thử khám phá</b></td><td>Thiết kế + thực thi + đánh giá <b>đồng thời</b>; session-based (dùng test charter). Hữu ích khi ít tài liệu / áp lực thời gian.</td></tr>
-        <tr><td><b>Dựa trên checklist</b></td><td>Test theo checklist; cần cập nhật thường xuyên; bao phủ cao hơn nhưng lặp lại thấp hơn.</td></tr>
+        <tr><td><b>4.4.1 Đoán lỗi</b></td><td>Dựa vào lỗi <b>đã từng xảy ra</b>, lỗi dev hay mắc. <span class="term">Fault attacks</span> = triển khai thực tế.</td></tr>
+        <tr><td><b>4.4.2 Kiểm thử khám phá</b></td><td>Thiết kế + thực thi + đánh giá <b>đồng thời</b>; session-based (dùng test charter). Hữu ích khi ít tài liệu / áp lực thời gian.</td></tr>
+        <tr><td><b>4.4.3 Dựa trên checklist</b></td><td>Test theo checklist; cần cập nhật thường xuyên; bao phủ cao hơn nhưng lặp lại thấp hơn.</td></tr>
       </tbody></table></div>
 
       <h3 class="sub">4.5 Dựa trên Cộng tác</h3>
@@ -416,7 +427,10 @@ a{color:var(--accent-ink)}
       <div class="ch-head"><div class="ch-num">5</div><h2>Quản lý các Hoạt động Kiểm thử</h2><div class="ch-min">335 phút · 9 câu</div></div>
 
       <h3 class="sub">5.1 Lập Kế hoạch Kiểm thử</h3>
+      <h4>5.1.1 Mục đích &amp; nội dung kế hoạch kiểm thử</h4>
       <p><b>Kế hoạch KT</b> mô tả mục tiêu, nguồn lực, quy trình; là phương tiện giao tiếp. Nội dung: bối cảnh · giả định &amp; ràng buộc · bên liên quan · danh sách rủi ro · <strong>phương pháp tiếp cận</strong> · ngân sách &amp; lịch.</p>
+      <h4>5.1.2 Đóng góp của tester (iteration &amp; release)</h4>
+      <p><b>Release planning:</b> tester viết user story &amp; tiêu chí chấp nhận, phân tích rủi ro, ước lượng, chọn cách tiếp cận KT. <b>Iteration planning:</b> phân tích rủi ro chi tiết, phân tách nhiệm vụ KT, ước lượng công sức từng nhiệm vụ.</p>
       <h4>5.1.3 Tiêu chí Bắt đầu &amp; Kết thúc</h4>
       <p><b>Entry:</b> điều kiện tiên quyết (nguồn lực, testware, smoke test đạt). <b>Exit:</b> điều phải đạt để hoàn thành. Agile: <strong>DoD</strong> = kết thúc, <strong>DoR</strong> = bắt đầu.</p>
       <div class="key"><span class="ic">🔑</span><p><b>Hết thời gian/ngân sách</b> cũng là tiêu chí kết thúc hợp lệ (nếu bên liên quan chấp nhận rủi ro).</p></div>
@@ -430,8 +444,9 @@ a{color:var(--accent-ink)}
       <h4><span class="k K3">K3</span> 5.1.5 Ưu tiên hóa Test Case</h4>
       <p>Chiến lược: dựa vào <strong>rủi ro</strong> · dựa vào <strong>độ bao phủ</strong> (có biến thể bao phủ bổ sung) · dựa vào <strong>yêu cầu</strong>.</p>
       <div class="key"><span class="ic">🔑</span><p>Nếu test ưu tiên cao <b>phụ thuộc</b> test ưu tiên thấp → test thấp vẫn phải chạy trước.</p></div>
-      <h4>5.1.6–5.1.7 Test Pyramid &amp; Testing Quadrants</h4>
+      <h4>5.1.6 Tháp kiểm thử (Test Pyramid)</h4>
       <p><b>Tháp kiểm thử:</b> đáy = test nhỏ, nhanh, <strong>nhiều</strong> (unit); đỉnh = end-to-end, chậm, <strong>ít</strong>.</p>
+      <h4>5.1.7 Góc phần tư Kiểm thử (Testing Quadrants)</h4>
       <div class="tw"><table><thead><tr><th>Quadrant</th><th>Hướng</th><th>Nội dung</th></tr></thead><tbody>
         <tr><td><b>Q1</b></td><td>Công nghệ · hỗ trợ nhóm</td><td>Component &amp; tích hợp; tự động, CI.</td></tr>
         <tr><td><b>Q2</b></td><td>Nghiệp vụ · hỗ trợ nhóm</td><td>Chức năng, user story, API; tiêu chí chấp nhận.</td></tr>
@@ -441,23 +456,33 @@ a{color:var(--accent-ink)}
 
       <h3 class="sub">5.2 Quản lý Rủi ro</h3>
       <p><b>Hai hoạt động:</b> Phân tích rủi ro (nhận diện + đánh giá) &amp; Kiểm soát rủi ro (giảm thiểu + giám sát). Cách tiếp cận chọn/ưu tiên KT dựa vào rủi ro = <strong>kiểm thử dựa vào rủi ro</strong>.</p>
+      <h4>5.2.1 Định nghĩa &amp; thuộc tính rủi ro</h4>
       <div class="key"><span class="ic">🔑</span><p><b>Mức rủi ro = Khả năng xảy ra × Mức độ ảnh hưởng.</b></p></div>
+      <h4>5.2.2 Rủi ro dự án vs rủi ro sản phẩm</h4>
       <div class="tw"><table><thead><tr><th></th><th>Rủi ro dự án</th><th>Rủi ro sản phẩm</th></tr></thead><tbody>
         <tr><td>Liên quan</td><td>Quản lý &amp; kiểm soát dự án</td><td>Đặc tính chất lượng sản phẩm</td></tr>
         <tr><td>Ví dụ</td><td>Chậm bàn giao, thiếu kỹ năng, nhà cung cấp</td><td>Sai chức năng, lỗ hổng bảo mật, hiệu năng kém</td></tr>
       </tbody></table></div>
-      <p><b>Đánh giá rủi ro:</b> định lượng (nhân khả năng × ảnh hưởng) · định tính (ma trận rủi ro). <b>Ứng phó:</b> giảm thiểu bằng KT · chấp nhận · chuyển giao · dự phòng.</p>
+      <h4>5.2.3 Phân tích &amp; 5.2.4 Kiểm soát rủi ro sản phẩm</h4>
+      <p><b>Phân tích (đánh giá) rủi ro:</b> định lượng (nhân khả năng × ảnh hưởng) · định tính (ma trận rủi ro). <b>Kiểm soát — ứng phó:</b> giảm thiểu bằng KT · chấp nhận · chuyển giao · dự phòng.</p>
 
       <h3 class="sub">5.3 Giám sát, Kiểm soát &amp; Kết thúc</h3>
       <p><b>Giám sát</b> = thu thập thông tin → đánh giá tiến độ. <b>Kiểm soát</b> = dùng thông tin đó ra chỉ đạo điều chỉnh. <b>Kết thúc</b> = tổng hợp kinh nghiệm &amp; testware.</p>
+      <h4>5.3.1 Chỉ số kiểm thử (metrics)</h4>
+      <p>Tiến độ dự án · tiến độ KT (test đã chạy/đạt/không đạt) · chất lượng sản phẩm · <strong>lỗi</strong> (số lượng, mật độ, tỷ lệ phát hiện) · rủi ro · <strong>độ bao phủ</strong> · chi phí.</p>
+      <h4>5.3.2 Báo cáo kiểm thử</h4>
       <div class="tw"><table><thead><tr><th>Báo cáo tiến độ</th><th>Báo cáo kết thúc</th></tr></thead><tbody>
         <tr><td>Định kỳ, ít trang trọng, hỗ trợ kiểm soát.</td><td>Một lần, theo biểu mẫu, tổng hợp.</td></tr>
       </tbody></table></div>
+      <h4>5.3.3 Truyền đạt trạng thái kiểm thử</h4>
+      <p>Cách: giao tiếp bằng lời · <strong>bảng điều khiển</strong> (dashboard, burn-down) · email/chat · tài liệu trực tuyến · báo cáo chính thức. Nhóm <strong>phân tán</strong> → hình thức trang trọng hơn.</p>
 
       <h3 class="sub">5.4 Quản lý Cấu hình</h3>
+      <h4>5.4.1 Cách quản lý cấu hình hỗ trợ kiểm thử</h4>
       <p>Xác định – kiểm soát – theo dõi testware. Hạng mục được duyệt → <strong>baseline</strong>, chỉ đổi qua kiểm soát thay đổi chính thức → hỗ trợ <strong>truy vết</strong> &amp; tái hiện kết quả.</p>
 
       <h3 class="sub">5.5 Quản lý Lỗi <span class="k K3">K3</span></h3>
+      <h4>5.5.1 Chuẩn bị báo cáo lỗi</h4>
       <p>Bất thường có thể là lỗi, <strong>dương tính giả</strong>, hoặc yêu cầu cải tiến. Luồng: ghi nhận → phân tích &amp; phân loại → quyết định → <strong>đóng</strong>.</p>
       <p><b>Nội dung báo cáo lỗi:</b> Bug ID · tóm tắt · ngày/người báo cáo · đối tượng &amp; môi trường · bối cảnh · <strong>bước tái hiện</strong> · <strong>kết quả mong đợi vs thực tế</strong> · mức nghiêm trọng · ưu tiên · trạng thái.</p>
       <div class="key"><span class="ic">🔑</span><p><b>Severity</b> (mức nghiêm trọng — ảnh hưởng) khác <b>Priority</b> (mức ưu tiên sửa).</p></div>
