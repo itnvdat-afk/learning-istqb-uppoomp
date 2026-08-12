@@ -83,8 +83,8 @@ Nguyên nhân gốc rễ (root cause)
 | **Lập kế hoạch** | Xác định mục tiêu + chọn cách tiếp cận (mục 5.1) |
 | **Giám sát & kiểm soát** | Theo dõi tiến độ vs kế hoạch; hành động điều chỉnh (mục 5.3) |
 | **Phân tích** | "**Kiểm thử cái gì?**" → xác định khía cạnh/điều kiện kiểm thử có thể đo lường |
-| **Thiết kế** | "**Kiểm thử như thế nào?**" → test case, hạng mục bao phủ, dữ liệu, môi trường |
-| **Triển khai** | Tạo/thu thập testware: test procedure, script, test suite, dữ liệu; thiết lập môi trường |
+| **Thiết kế** | "**Kiểm thử như thế nào?**" → ca kiểm thử (test case), hạng mục bao phủ, dữ liệu, môi trường |
+| **Triển khai** | Tạo/thu thập testware: thủ tục kiểm thử (test procedure), kịch bản (script), bộ kiểm thử (test suite), dữ liệu; thiết lập môi trường |
 | **Thực thi** | Chạy test (test run); so sánh kết quả thực tế vs mong đợi; ghi nhận & phân tích bất thường |
 | **Hoàn tất** | Tại các mốc; xử lý lỗi còn lại, lưu trữ testware, rút bài học, báo cáo hoàn tất |
 
@@ -97,10 +97,27 @@ Các yếu tố ngữ cảnh ảnh hưởng cách kiểm thử: **bên liên qua
 - Lập kế hoạch → kế hoạch KT, lịch KT, danh sách rủi ro, tiêu chí bắt đầu/kết thúc.
 - Giám sát & kiểm soát → báo cáo tiến độ, chỉ đạo kiểm soát.
 - Phân tích → khía cạnh KT ưu tiên hóa, báo cáo lỗi cơ sở KT.
-- Thiết kế → test case, test charter, hạng mục bao phủ, yêu cầu dữ liệu/môi trường.
-- Triển khai → test procedure, test script (thủ công/tự động), test suite, dữ liệu, stub/driver/simulator.
+- Thiết kế → **ca kiểm thử** (test case), **bản định hướng kiểm thử** (test charter), hạng mục bao phủ, yêu cầu dữ liệu/môi trường.
+- Triển khai → **thủ tục kiểm thử** (test procedure), **kịch bản kiểm thử** (test script — thủ công/tự động), **bộ kiểm thử** (test suite), dữ liệu, **mô-đun giả / mô-đun gọi thử / trình mô phỏng** (stub/driver/simulator).
 - Thực thi → nhật ký kiểm thử, báo cáo lỗi.
 - Hoàn tất → báo cáo hoàn tất, action items, bài học, yêu cầu thay đổi.
+
+#### 📘 Giải nghĩa các thuật ngữ testware
+
+| Thuật ngữ (EN) | Tiếng Việt | Nội dung |
+|----------------|-----------|----------|
+| **Test case** | Ca kiểm thử | Tập hợp **điều kiện tiên quyết, đầu vào, hành động, kết quả mong đợi, hậu điều kiện** — dẫn xuất từ một điều kiện kiểm thử. Đầu ra của **Thiết kế**. |
+| **Test charter** | Bản định hướng kiểm thử | Mô tả **mục tiêu + ý tưởng kiểm thử** cho một **phiên kiểm thử khám phá** giới hạn thời gian (mục 4.4.2). Đầu ra của **Thiết kế**. |
+| **Test procedure** | Thủ tục kiểm thử | **Chuỗi test case theo thứ tự thực thi**, kèm các thao tác chuẩn bị & kết thúc cần thiết. Đầu ra của **Triển khai**. |
+| **Test script** | Kịch bản kiểm thử | Chuỗi **lệnh/bước thực thi được** (thủ công hoặc tự động hóa) để chạy test. |
+| **Test suite** | Bộ kiểm thử | **Tập hợp** test case / test script gom lại để chạy trong cùng một đợt (vd: bộ hồi quy, bộ smoke). |
+| **Stub** | Mô-đun giả (bên **dưới**) | Cài đặt tối giản **thay cho thành phần BỊ GỌI** chưa sẵn sàng. Hay dùng khi tích hợp **top-down**. |
+| **Driver** | Mô-đun gọi thử (bên **trên**) | Thành phần **GỌI/kích hoạt** đối tượng cần kiểm thử, thay cho thành phần gọi chưa có. Hay dùng khi tích hợp **bottom-up**. |
+| **Simulator** | Trình mô phỏng | Mô phỏng hành vi của **hệ thống/thiết bị thật** khi bản thật không có sẵn, quá đắt hoặc nguy hiểm để dùng thật. |
+
+> 🔑 **Bẫy hay gặp:** `stub` ↔ `driver` dễ đảo ngược. Nhớ theo **hướng gọi**: driver **gọi xuống** đối tượng KT, stub **bị đối tượng KT gọi xuống**. Stub + driver hợp thành **test harness** dùng ở mức kiểm thử thành phần (mục 2.2.1).
+>
+> 🔑 **Phân biệt bộ ba:** test **case** (thiết kế: KT cái gì, mong đợi gì) → test **procedure** (triển khai: chạy theo **thứ tự** nào) → test **suite** (gom nhóm để chạy một đợt).
 
 ### 1.4.4 Khả năng truy vết (Traceability)
 Truy vết giữa cơ sở KT ↔ testware ↔ kết quả ↔ lỗi. Lợi ích:
@@ -189,7 +206,7 @@ Các mức độ độc lập (tăng dần): **tự kiểm thử (không độc 
 ### 2.2.1 Các mức kiểm thử (5 mức)
 | Mức | Trọng tâm |
 |-----|-----------|
-| **Kiểm thử thành phần** (component/unit) | Thành phần độc lập; do lập trình viên; cần test harness. |
+| **Kiểm thử thành phần** (component/unit) | Thành phần độc lập; do lập trình viên; cần **test harness** (bộ khung KT = driver + stub, xem mục 1.4.3). |
 | **Kiểm thử tích hợp thành phần** | Điểm kết nối & tương tác giữa các thành phần; phụ thuộc chiến lược (bottom-up/top-down/big-bang). |
 | **Kiểm thử hệ thống** | Hành vi tổng thể end-to-end; chức năng + phi chức năng; đội độc lập. |
 | **Kiểm thử tích hợp hệ thống** | Kết nối với hệ thống/dịch vụ ngoài; môi trường gần thực tế. |
@@ -354,7 +371,7 @@ Truyền đạt sớm vấn đề chất lượng; tránh làm lại tốn kém;
 
 ### 4.4.2 Kiểm thử Khám phá (Exploratory Testing)
 - **Thiết kế + thực thi + đánh giá đồng thời**, vừa làm vừa tìm hiểu đối tượng KT.
-- **Session-based:** giới hạn thời gian (vd 45 phút), dùng **test charter**, kết thúc bằng buổi tổng kết (debrief).
+- **Session-based:** giới hạn thời gian (vd 45 phút), dùng **test charter** (*bản định hướng kiểm thử* — mục tiêu & ý tưởng KT của phiên, xem mục 1.4.3), kết thúc bằng buổi tổng kết (debrief).
 - Hữu ích khi **ít/không có tài liệu** hoặc **áp lực thời gian**; bổ trợ kỹ thuật chính quy; hiệu quả hơn nếu tester **giàu kinh nghiệm**.
 
 ### 4.4.3 Kiểm thử Dựa trên Checklist

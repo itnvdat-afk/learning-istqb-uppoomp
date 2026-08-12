@@ -231,14 +231,25 @@ a{color:var(--accent-ink)}
         <tr><td>Lập kế hoạch</td><td>Xác định mục tiêu + chọn cách tiếp cận.</td></tr>
         <tr><td>Giám sát &amp; kiểm soát</td><td>Theo dõi tiến độ vs kế hoạch; hành động điều chỉnh.</td></tr>
         <tr><td><b>Phân tích</b></td><td>"<b>Kiểm thử cái gì?</b>" → xác định khía cạnh/điều kiện đo lường được.</td></tr>
-        <tr><td><b>Thiết kế</b></td><td>"<b>Kiểm thử như thế nào?</b>" → test case, hạng mục bao phủ, dữ liệu.</td></tr>
+        <tr><td><b>Thiết kế</b></td><td>"<b>Kiểm thử như thế nào?</b>" → ca kiểm thử (test case), hạng mục bao phủ, dữ liệu.</td></tr>
         <tr><td>Triển khai</td><td>Tạo testware, thiết lập môi trường.</td></tr>
         <tr><td>Thực thi</td><td>Chạy test; so sánh thực tế vs mong đợi; ghi nhận bất thường.</td></tr>
         <tr><td>Hoàn tất</td><td>Xử lý lỗi còn lại, lưu testware, rút bài học, báo cáo.</td></tr>
       </tbody></table></div>
       <div class="key"><span class="ic">🔑</span><p>Các hoạt động thường <b>lặp/song song</b>. Nhớ: <b>Phân tích = cái gì</b>, <b>Thiết kế = như thế nào</b>.</p></div>
       <h4>1.4.3 Testware (sản phẩm kiểm thử)</h4>
-      <p>Đầu ra của mỗi hoạt động: kế hoạch/lịch/danh sách rủi ro · báo cáo tiến độ · khía cạnh KT · test case &amp; test charter · test procedure/script/suite, stub/driver/simulator · nhật ký &amp; báo cáo lỗi · báo cáo hoàn tất.</p>
+      <p>Đầu ra của mỗi hoạt động: kế hoạch/lịch/danh sách rủi ro · báo cáo tiến độ · khía cạnh KT · <b>ca kiểm thử</b> &amp; <b>bản định hướng kiểm thử</b> (test case &amp; test charter) · <b>thủ tục / kịch bản / bộ kiểm thử</b> (test procedure/script/suite), <b>mô-đun giả / mô-đun gọi thử / trình mô phỏng</b> (stub/driver/simulator) · nhật ký &amp; báo cáo lỗi · báo cáo hoàn tất.</p>
+      <div class="tw"><table><thead><tr><th>Thuật ngữ</th><th>Tiếng Việt</th><th>Nội dung</th></tr></thead><tbody>
+        <tr><td><span class="term">test case</span></td><td><b>Ca kiểm thử</b></td><td>Điều kiện tiên quyết + đầu vào + hành động + <b>kết quả mong đợi</b> + hậu điều kiện. Đầu ra của <b>Thiết kế</b>.</td></tr>
+        <tr><td><span class="term">test charter</span></td><td><b>Bản định hướng kiểm thử</b></td><td>Mục tiêu &amp; ý tưởng KT cho một <b>phiên kiểm thử khám phá</b> giới hạn thời gian (4.4.2). Đầu ra của <b>Thiết kế</b>.</td></tr>
+        <tr><td><span class="term">test procedure</span></td><td><b>Thủ tục kiểm thử</b></td><td>Chuỗi test case theo <b>thứ tự thực thi</b>, kèm thao tác chuẩn bị &amp; kết thúc. Đầu ra của <b>Triển khai</b>.</td></tr>
+        <tr><td><span class="term">test script</span></td><td><b>Kịch bản kiểm thử</b></td><td>Chuỗi lệnh/bước <b>thực thi được</b> — thủ công hoặc tự động hóa.</td></tr>
+        <tr><td><span class="term">test suite</span></td><td><b>Bộ kiểm thử</b></td><td><b>Tập hợp</b> test case/script gom lại chạy cùng một đợt (bộ hồi quy, bộ smoke).</td></tr>
+        <tr><td><span class="term">stub</span></td><td><b>Mô-đun giả</b> (bên <b>dưới</b>)</td><td>Cài đặt tối giản thay cho thành phần <b>BỊ GỌI</b> chưa sẵn sàng — tích hợp <b>top-down</b>.</td></tr>
+        <tr><td><span class="term">driver</span></td><td><b>Mô-đun gọi thử</b> (bên <b>trên</b>)</td><td>Thành phần <b>GỌI</b> đối tượng cần KT, thay cho thành phần gọi chưa có — tích hợp <b>bottom-up</b>.</td></tr>
+        <tr><td><span class="term">simulator</span></td><td><b>Trình mô phỏng</b></td><td>Mô phỏng hệ thống/thiết bị <b>thật</b> khi bản thật không sẵn có, quá đắt hoặc nguy hiểm.</td></tr>
+      </tbody></table></div>
+      <div class="key"><span class="ic">🔑</span><p><b>stub ↔ driver</b> rất dễ đảo ngược — nhớ theo <b>hướng gọi</b>: driver <b>gọi xuống</b> đối tượng KT, stub <b>bị</b> đối tượng KT gọi xuống. Cả hai hợp thành <b>test harness</b> ở mức kiểm thử thành phần. Bộ ba còn lại: test <b>case</b> (KT cái gì) → test <b>procedure</b> (chạy theo <b>thứ tự</b> nào) → test <b>suite</b> (gom nhóm chạy một đợt).</p></div>
       <h4>1.4.4 Truy vết (traceability)</h4>
       <p>Truy vết cơ sở KT ↔ testware ↔ kết quả ↔ lỗi → đánh giá <strong>độ bao phủ</strong> (làm KPI), phân tích tác động thay đổi, báo cáo dễ hiểu.</p>
       <h4>1.4.5 Vai trò trong kiểm thử</h4>
@@ -285,7 +296,7 @@ a{color:var(--accent-ink)}
       <h3 class="sub">2.2 Các Mức &amp; Loại Kiểm thử</h3>
       <h4>2.2.1 Năm mức kiểm thử</h4>
       <div class="tw"><table><thead><tr><th>Mức</th><th>Trọng tâm</th></tr></thead><tbody>
-        <tr><td><b>Thành phần</b> (unit)</td><td>Thành phần độc lập; do dev; cần test harness.</td></tr>
+        <tr><td><b>Thành phần</b> (unit)</td><td>Thành phần độc lập; do dev; cần <b>test harness</b> (bộ khung KT = driver + stub, xem 1.4.3).</td></tr>
         <tr><td><b>Tích hợp thành phần</b></td><td>Kết nối giữa thành phần (bottom-up/top-down/big-bang).</td></tr>
         <tr><td><b>Hệ thống</b></td><td>Hành vi tổng thể end-to-end; chức năng + phi chức năng.</td></tr>
         <tr><td><b>Tích hợp hệ thống</b></td><td>Kết nối hệ thống/dịch vụ ngoài; môi trường gần thực tế.</td></tr>
@@ -394,7 +405,7 @@ a{color:var(--accent-ink)}
       <h3 class="sub">4.4 Dựa trên Kinh nghiệm</h3>
       <div class="tw"><table><thead><tr><th>Kỹ thuật</th><th>Nội dung</th></tr></thead><tbody>
         <tr><td><b>Đoán lỗi</b></td><td>Dựa vào lỗi <b>đã từng xảy ra</b>, lỗi dev hay mắc. <span class="term">Fault attacks</span> = triển khai thực tế.</td></tr>
-        <tr><td><b>Kiểm thử khám phá</b></td><td>Thiết kế + thực thi + đánh giá <b>đồng thời</b>; session-based (dùng test charter). Hữu ích khi ít tài liệu / áp lực thời gian.</td></tr>
+        <tr><td><b>Kiểm thử khám phá</b></td><td>Thiết kế + thực thi + đánh giá <b>đồng thời</b>; session-based (dùng <b>test charter</b> — bản định hướng KT, xem 1.4.3). Hữu ích khi ít tài liệu / áp lực thời gian.</td></tr>
         <tr><td><b>Dựa trên checklist</b></td><td>Test theo checklist; cần cập nhật thường xuyên; bao phủ cao hơn nhưng lặp lại thấp hơn.</td></tr>
       </tbody></table></div>
 
