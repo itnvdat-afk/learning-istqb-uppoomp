@@ -278,7 +278,7 @@ Phiên bản 1.6 — Trang 14/21 — Ngày 25 tháng 3 năm 2025
 ### Câu #23 (1 Điểm)
 Bạn đang thiết kế các ca kiểm thử dựa trên sơ đồ chuyển trạng thái (state transition diagram) sau đây:
 
-> [HÌNH ẢNH: Sơ đồ chuyển trạng thái — giữ nguyên hình ảnh gốc từ tài liệu.]
+![Sơ đồ chuyển trạng thái](images/img-q23.png)
 
 Số lượng ca kiểm thử TỐI THIỂU cần thiết để đạt được 100% độ bao phủ chuyển trạng thái hợp lệ (valid transitions coverage) là bao nhiêu?
 a) 3
@@ -295,7 +295,7 @@ Phiên bản 1.6 — Trang 15/21 — Ngày 25 tháng 3 năm 2025
 ### Câu #24 (1 Điểm)
 Bạn muốn áp dụng kiểm thử nhánh (branch testing) cho đoạn mã được biểu diễn bởi đồ thị luồng điều khiển (control flow graph) sau đây.
 
-> [HÌNH ẢNH: Đồ thị luồng điều khiển — giữ nguyên hình ảnh gốc từ tài liệu.]
+![Đồ thị luồng điều khiển](images/img-q24.png)
 
 Bạn cần kiểm thử bao nhiêu mục bao phủ (coverage items)?
 a) 2
@@ -385,10 +385,9 @@ E(n) = ( 3 * A(n-1) + A(n-2) ) / 4
 
 Biểu đồ cho thấy khối lượng công việc ước lượng và thực tế cho bốn vòng lặp đầu tiên.
 
-> [HÌNH ẢNH: Biểu đồ cột — giữ nguyên hình ảnh gốc từ tài liệu.]
-> Trục tung: 0–13. Tiêu đề: "Estimated and actual effort (in person-days)" (Nỗ lực ước lượng và thực tế (tính bằng người-ngày)).
-> Trục hoành: Iteration #1 (Vòng lặp #1), Iteration #2 (Vòng lặp #2), Iteration #3 (Vòng lặp #3), Iteration #4 (Vòng lặp #4).
-> Chú giải: Estimated (Ước lượng), Actual (Thực tế).
+![Biểu đồ nỗ lực ước lượng và thực tế](images/img-q31.png)
+
+> Chú thích nhãn biểu đồ: Tiêu đề "Estimated and actual effort (in person-days)" = Nỗ lực ước lượng và thực tế (tính bằng người-ngày); Iteration #1..#4 = Vòng lặp #1..#4; Estimated = Ước lượng; Actual = Thực tế.
 
 Khối lượng công việc ước lượng cho vòng lặp #5 là bao nhiêu?
 a) 10,5 người-ngày
@@ -407,7 +406,7 @@ Bạn đang chuẩn bị một lịch thực thi kiểm thử để thực thi b
 Hình sau đây bao gồm các mức độ ưu tiên của các ca kiểm thử này (1 = ưu tiên cao nhất, 3 = ưu tiên thấp nhất).
 Hình cũng cho thấy các phụ thuộc giữa các ca kiểm thử bằng các mũi tên. Ví dụ, mũi tên từ TC 4 đến TC 5 nghĩa là TC 5 chỉ có thể được thực thi nếu TC 4 đã được thực thi trước đó.
 
-> [HÌNH ẢNH: Sơ đồ các ca kiểm thử với mức độ ưu tiên và các mũi tên phụ thuộc — giữ nguyên hình ảnh gốc từ tài liệu.]
+![Sơ đồ các ca kiểm thử với mức độ ưu tiên và các mũi tên phụ thuộc](images/img-q32.png)
 
 Ca kiểm thử nào nên được thực thi thứ sáu?
 a) TC 3
