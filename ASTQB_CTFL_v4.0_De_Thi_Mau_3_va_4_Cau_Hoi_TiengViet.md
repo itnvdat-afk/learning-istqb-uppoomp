@@ -376,12 +376,12 @@ Với thông tin này, thứ tự tốt nhất để chạy các kiểm thử n�
 
 | Mã Ca kiểm thử | Thời lượng | Rủi ro | Ưu tiên | Phụ thuộc |
 |---|---|---|---|---|
-| 1 | 30 phút | Thấp | 6 | |
-| 2 | 10 phút | Trung bình | none | |
-| 3 | 45 phút | Cao | 1 | |
-| 4 | 30 phút | Cao | 2 | |
-| 5 | 10 phút | Trung bình | 4 | |
-| 6 | 15 phút | Thấp | 2 | |
+| 1 | 30 phút | Thấp | | 6 |
+| 2 | 10 phút | Trung bình | | none |
+| 3 | 45 phút | Cao | | 1 |
+| 4 | 30 phút | Cao | | 2 |
+| 5 | 10 phút | Trung bình | | 4 |
+| 6 | 15 phút | Thấp | | 2 |
 
 a. 2, 4, 5, 6, 1, 3
 b. 4, 3, 2, 5, 6, 1
